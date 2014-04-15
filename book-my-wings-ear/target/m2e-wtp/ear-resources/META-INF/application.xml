@@ -6,15 +6,15 @@
   <display-name>book-my-wings-ear</display-name>
   <description>EAR-Packaging Project for BookMyWings-Server-Components</description>
   <module>
+    <web>
+      <web-uri>book-my-wings-rest-enabler-0.0.1-SNAPSHOT.war</web-uri>
+      <context-root>/book-my-wings</context-root>
+    </web>
+  </module>
+  <module>
     <ejb>aircraft-service-0.0.1-SNAPSHOT.jar</ejb>
   </module>
   <module>
     <ejb>common-service-0.0.1-SNAPSHOT.jar</ejb>
-  </module>
-  <module>
-    <web>
-      <web-uri>book-my-wings-rest-enabler-0.0.1-SNAPSHOT.war</web-uri>
-      <context-root>/book-my-wings-rest-enabler</context-root>
-    </web>
   </module>
 </application>

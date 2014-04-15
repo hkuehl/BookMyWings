@@ -18,6 +18,13 @@
 				<version>2.9</version>
 				<configuration>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>com.prodyna.bmw.server</groupId>
+							<artifactId>book-my-wings-rest-enabler</artifactId>
+							<contextRoot>/book-my-wings</contextRoot>
+						</webModule>
+					</modules>
 				</configuration>
 			</plugin>
 		</plugins>
