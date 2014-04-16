@@ -9,33 +9,15 @@
 	<artifactId>bmw-integration-test</artifactId>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.wildfly.plugins</groupId>
-					<artifactId>wildfly-maven-plugin</artifactId>
-					<version>1.0.1.Final</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<!-- To use the plugin goals in your POM or parent POM -->
-		<plugins>
-			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<systemProperties>
-						<property>
-							<name>java.util.logging.manager</name>
-							<value>org.jboss.logmanager.LogManager</value>
-						</property>
-					</systemProperties>
-				</configuration>
-			</plugin>
-		</plugins>
+		<testResources>
+			<testResource>
+				<filtering>true</filtering>
+				<directory>src/test/resources</directory>
+				<excludes>
+					<exclude>arquillian.xml</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 	</build>
 
 	<dependencies>
@@ -50,11 +32,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-arquillian-container-embedded</artifactId>
-			<version>8.0.0.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
 			<artifactId>aircraft-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -62,8 +39,43 @@
 		</dependency>
 	</dependencies>
 
-	<properties>
-		<version.org.jboss.jbossas>8.0.0.Final</version.org.jboss.jbossas>
-		<JBOSS_HOME>${project.build.directory}/jboss-${version.org.jboss.jbossas}</JBOSS_HOME>
-	</properties>
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-remote</artifactId>
+					<version>8.0.0.Final</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>travis</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<testResources>
+					<testResource>
+						<filtering>true</filtering>
+						<directory>src/test/resources</directory>
+						<includes>
+							<include>arquillian.xml</include>
+						</includes>
+					</testResource>
+				</testResources>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-embedded</artifactId>
+					<version>8.0.0.Final</version>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>

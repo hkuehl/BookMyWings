@@ -1,7 +1,7 @@
-2014-04-16 17:38:20,555 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final
-2014-04-16 17:38:20,801 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.0.Final
-2014-04-16 17:38:20,890 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.0.0.Final "WildFly" starting
-2014-04-16 17:38:20,895 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+2014-04-16 21:18:10,101 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final
+2014-04-16 21:18:10,362 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.0.Final
+2014-04-16 21:18:10,457 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.0.0.Final "WildFly" starting
+2014-04-16 21:18:10,463 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
 	awt.toolkit = sun.lwawt.macosx.LWCToolkit
 	file.encoding = UTF-8
 	file.encoding.pkg = sun.io
@@ -83,52 +83,52 @@
 	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
 	sun.os.patch.level = unknown
 	user.country = DE
-	user.dir = /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test
+	user.dir = /Users/henry/dev/workspaces/BookMyWings/book-my-wings
 	user.home = /Users/henry
 	user.language = de
 	user.name = henry
 	user.timezone = Europe/Berlin
-2014-04-16 17:38:20,898 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Dorg.jboss.boot.log.file=/Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/configuration/logging.properties 
-2014-04-16 17:38:21,844 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
-2014-04-16 17:38:21,860 INFO  [org.xnio] (MSC service thread 1-3) XNIO version 3.2.0.Final
-2014-04-16 17:38:21,867 INFO  [org.xnio.nio] (MSC service thread 1-3) XNIO NIO Implementation Version 3.2.0.Final
-2014-04-16 17:38:21,906 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 46) JBAS013171: Activating Security Subsystem
-2014-04-16 17:38:21,914 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 33) JBAS010280: Activating Infinispan subsystem.
-2014-04-16 17:38:21,926 INFO  [org.jboss.as.security] (MSC service thread 1-7) JBAS013170: Current PicketBox version=4.0.20.Final
-2014-04-16 17:38:21,928 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 41) JBAS011800: Activating Naming Subsystem
-2014-04-16 17:38:21,932 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 39) JBAS012615: Activated the following JSF Implementations: [main]
-2014-04-16 17:38:21,959 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 50) JBAS015537: Activating WebServices Extension
-2014-04-16 17:38:21,979 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 28) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
-2014-04-16 17:38:21,984 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-5) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.3.Final)
-2014-04-16 17:38:21,988 INFO  [org.jboss.remoting] (MSC service thread 1-3) JBoss Remoting version 4.0.0.Final
-2014-04-16 17:38:22,003 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017502: Undertow 1.0.0.Final starting
-2014-04-16 17:38:22,003 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017502: Undertow 1.0.0.Final starting
-2014-04-16 17:38:22,012 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) JBAS010417: Started Driver service with driver-name = h2
-2014-04-16 17:38:22,064 INFO  [org.jboss.as.naming] (MSC service thread 1-6) JBAS011802: Starting Naming Service
-2014-04-16 17:38:22,064 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-8) JBAS015400: Bound mail session [java:jboss/mail/Default]
-2014-04-16 17:38:22,177 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017527: Creating file handler for path /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/welcome-content
-2014-04-16 17:38:22,218 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017525: Started server default-server.
-2014-04-16 17:38:22,240 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017531: Host default-host starting
-2014-04-16 17:38:22,342 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017519: Undertow HTTP listener default listening on /127.0.0.1:8080
-2014-04-16 17:38:22,616 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) JBAS015012: Started FileSystemDeploymentService for directory /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/deployments
-2014-04-16 17:38:22,754 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
-2014-04-16 17:38:23,047 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.2.3.Final
-2014-04-16 17:38:23,103 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
-2014-04-16 17:38:23,104 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
-2014-04-16 17:38:23,104 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.0.0.Final "WildFly" started in 2901ms - Started 183 of 232 services (80 services are lazy, passive or on-demand)
-2014-04-16 17:38:31,745 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014900: Content added at location /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/data/content/0e/381cfc33d5f3c33684fec650b6f50b1d442473/content
-2014-04-16 17:38:31,760 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015876: Starting deployment of "test.war" (runtime-name: "test.war")
-2014-04-16 17:38:32,157 INFO  [org.jboss.as.jpa] (MSC service thread 1-2) JBAS011401: Read persistence.xml for bookmywings
-2014-04-16 17:38:32,454 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 11) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test.war#bookmywings'
-2014-04-16 17:38:32,461 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 11) HHH000204: Processing PersistenceUnitInfo [
+2014-04-16 21:18:10,466 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Dorg.jboss.boot.log.file=/Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/configuration/logging.properties 
+2014-04-16 21:18:11,431 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+2014-04-16 21:18:11,447 INFO  [org.xnio] (MSC service thread 1-3) XNIO version 3.2.0.Final
+2014-04-16 21:18:11,454 INFO  [org.xnio.nio] (MSC service thread 1-3) XNIO NIO Implementation Version 3.2.0.Final
+2014-04-16 21:18:11,492 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 46) JBAS013171: Activating Security Subsystem
+2014-04-16 21:18:11,496 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 33) JBAS010280: Activating Infinispan subsystem.
+2014-04-16 21:18:11,508 INFO  [org.jboss.as.security] (MSC service thread 1-6) JBAS013170: Current PicketBox version=4.0.20.Final
+2014-04-16 21:18:11,515 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 39) JBAS012615: Activated the following JSF Implementations: [main]
+2014-04-16 21:18:11,521 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 41) JBAS011800: Activating Naming Subsystem
+2014-04-16 21:18:11,536 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 50) JBAS015537: Activating WebServices Extension
+2014-04-16 21:18:11,557 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-4) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.3.Final)
+2014-04-16 21:18:11,571 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 4.0.0.Final
+2014-04-16 21:18:11,581 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017502: Undertow 1.0.0.Final starting
+2014-04-16 21:18:11,581 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017502: Undertow 1.0.0.Final starting
+2014-04-16 21:18:11,598 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 28) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+2014-04-16 21:18:11,613 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = h2
+2014-04-16 21:18:11,655 INFO  [org.jboss.as.naming] (MSC service thread 1-5) JBAS011802: Starting Naming Service
+2014-04-16 21:18:11,656 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-2) JBAS015400: Bound mail session [java:jboss/mail/Default]
+2014-04-16 21:18:11,752 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017527: Creating file handler for path /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/welcome-content
+2014-04-16 21:18:11,801 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017525: Started server default-server.
+2014-04-16 21:18:11,864 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017531: Host default-host starting
+2014-04-16 21:18:12,015 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017519: Undertow HTTP listener default listening on /127.0.0.1:8080
+2014-04-16 21:18:12,343 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-5) JBAS015012: Started FileSystemDeploymentService for directory /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/deployments
+2014-04-16 21:18:12,370 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+2014-04-16 21:18:12,706 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.2.3.Final
+2014-04-16 21:18:12,764 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+2014-04-16 21:18:12,765 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+2014-04-16 21:18:12,765 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.0.0.Final "WildFly" started in 3005ms - Started 183 of 232 services (80 services are lazy, passive or on-demand)
+2014-04-16 21:18:21,391 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014900: Content added at location /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/data/content/88/426fdcdd8a588f374d14300367ccc5921c091a/content
+2014-04-16 21:18:21,407 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015876: Starting deployment of "test.war" (runtime-name: "test.war")
+2014-04-16 21:18:21,899 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011401: Read persistence.xml for bookmywings
+2014-04-16 21:18:21,976 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 13) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test.war#bookmywings'
+2014-04-16 21:18:21,983 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 13) HHH000204: Processing PersistenceUnitInfo [
 	name: bookmywings
 	...]
-2014-04-16 17:38:32,526 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 11) HHH000412: Hibernate Core {4.3.1.Final}
-2014-04-16 17:38:32,529 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 11) HHH000206: hibernate.properties not found
-2014-04-16 17:38:32,532 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 11) HHH000021: Bytecode provider name : javassist
-2014-04-16 17:38:32,641 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016002: Processing weld deployment test.war
-2014-04-16 17:38:32,690 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-7) HV000001: Hibernate Validator 5.0.3.Final
-2014-04-16 17:38:32,755 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-7) JNDI bindings for session bean named AircraftServiceBean in deployment unit deployment "test.war" are as follows:
+2014-04-16 21:18:22,052 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 13) HHH000412: Hibernate Core {4.3.1.Final}
+2014-04-16 21:18:22,054 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 13) HHH000206: hibernate.properties not found
+2014-04-16 21:18:22,056 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 13) HHH000021: Bytecode provider name : javassist
+2014-04-16 21:18:22,156 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) JBAS016002: Processing weld deployment test.war
+2014-04-16 21:18:22,204 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-6) HV000001: Hibernate Validator 5.0.3.Final
+2014-04-16 21:18:22,264 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-6) JNDI bindings for session bean named AircraftServiceBean in deployment unit deployment "test.war" are as follows:
 
 	java:global/test/AircraftServiceBean!com.prodyna.bmw.server.aircraft.AircraftService
 	java:app/test/AircraftServiceBean!com.prodyna.bmw.server.aircraft.AircraftService
@@ -137,34 +137,34 @@
 	java:app/test/AircraftServiceBean
 	java:module/AircraftServiceBean
 
-2014-04-16 17:38:32,891 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016005: Starting Services for CDI deployment: test.war
-2014-04-16 17:38:32,916 INFO  [org.jboss.weld.Version] (MSC service thread 1-1) WELD-000900: 2.1.2 (Final)
-2014-04-16 17:38:32,950 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016008: Starting weld service for deployment test.war
-2014-04-16 17:38:33,067 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 11) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test.war#bookmywings'
-2014-04-16 17:38:33,141 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 11) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-2014-04-16 17:38:33,308 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 11) HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2014-04-16 17:38:33,315 WARN  [org.hibernate.dialect.H2Dialect] (ServerService Thread Pool -- 11) HHH000431: Unable to determine H2 database version, certain features may not work
-2014-04-16 17:38:33,403 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 11) HHH000397: Using ASTQueryTranslatorFactory
-2014-04-16 17:38:33,659 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 11) HHH000227: Running hbm2ddl schema export
-2014-04-16 17:38:33,666 INFO  [stdout] (ServerService Thread Pool -- 11) Hibernate: drop table AIR_AIRCRAFT if exists
-2014-04-16 17:38:33,667 INFO  [stdout] (ServerService Thread Pool -- 11) Hibernate: create table AIR_AIRCRAFT (id varchar(255) not null, registration varchar(255) not null, primary key (id))
-2014-04-16 17:38:33,668 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 11) HHH000230: Schema export complete
-2014-04-16 17:38:34,403 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017534: Registered web context: /test
-2014-04-16 17:38:34,456 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018559: Deployed "test.war" (runtime-name : "test.war")
-2014-04-16 17:38:36,176 INFO  [java.lang.Class] (default task-1) Aircraft created 9f29bbce-e0e7-4f99-acc0-49eddb8cf91d
-2014-04-16 17:38:36,207 INFO  [stdout] (default task-1) Hibernate: insert into AIR_AIRCRAFT (registration, id) values (?, ?)
-2014-04-16 17:38:36,239 INFO  [stdout] (default task-1) Hibernate: select aircraft0_.id as id1_0_0_, aircraft0_.registration as registra2_0_0_ from AIR_AIRCRAFT aircraft0_ where aircraft0_.id=?
-2014-04-16 17:38:36,312 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017535: Unregistered web context: /test
-2014-04-16 17:38:36,335 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 6) JBAS011410: Stopping Persistence Unit (phase 2 of 2) Service 'test.war#bookmywings'
-2014-04-16 17:38:36,336 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016009: Stopping weld service for deployment test.war
-2014-04-16 17:38:36,367 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 6) JBAS011410: Stopping Persistence Unit (phase 1 of 2) Service 'test.war#bookmywings'
-2014-04-16 17:38:36,381 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) JBAS015877: Stopped deployment test.war (runtime-name: test.war) in 91ms
-2014-04-16 17:38:36,391 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014901: Content removed from location /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/data/content/0e/381cfc33d5f3c33684fec650b6f50b1d442473/content
-2014-04-16 17:38:36,392 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018558: Undeployed "test.war" (runtime-name: "test.war")
-2014-04-16 17:38:37,067 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) JBAS010409: Unbound data source [java:jboss/datasources/ExampleDS]
-2014-04-16 17:38:37,068 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017532: Host default-host stopping
-2014-04-16 17:38:37,075 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017521: Undertow HTTP listener default suspending
-2014-04-16 17:38:37,075 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010418: Stopped Driver service with driver-name = h2
-2014-04-16 17:38:37,076 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017520: Undertow HTTP listener default stopped, was bound to /127.0.0.1:8080
-2014-04-16 17:38:37,079 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017506: Undertow 1.0.0.Final stopping
-2014-04-16 17:38:37,091 INFO  [org.jboss.as] (MSC service thread 1-8) JBAS015950: WildFly 8.0.0.Final "WildFly" stopped in 26ms
+2014-04-16 21:18:22,398 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016005: Starting Services for CDI deployment: test.war
+2014-04-16 21:18:22,423 INFO  [org.jboss.weld.Version] (MSC service thread 1-8) WELD-000900: 2.1.2 (Final)
+2014-04-16 21:18:22,457 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) JBAS016008: Starting weld service for deployment test.war
+2014-04-16 21:18:22,572 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 13) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test.war#bookmywings'
+2014-04-16 21:18:22,640 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 13) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2014-04-16 21:18:22,811 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 13) HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2014-04-16 21:18:22,817 WARN  [org.hibernate.dialect.H2Dialect] (ServerService Thread Pool -- 13) HHH000431: Unable to determine H2 database version, certain features may not work
+2014-04-16 21:18:22,904 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 13) HHH000397: Using ASTQueryTranslatorFactory
+2014-04-16 21:18:23,152 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 13) HHH000227: Running hbm2ddl schema export
+2014-04-16 21:18:23,156 INFO  [stdout] (ServerService Thread Pool -- 13) Hibernate: drop table AIR_AIRCRAFT if exists
+2014-04-16 21:18:23,157 INFO  [stdout] (ServerService Thread Pool -- 13) Hibernate: create table AIR_AIRCRAFT (id varchar(255) not null, registration varchar(255) not null, primary key (id))
+2014-04-16 21:18:23,158 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 13) HHH000230: Schema export complete
+2014-04-16 21:18:23,887 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017534: Registered web context: /test
+2014-04-16 21:18:23,939 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018559: Deployed "test.war" (runtime-name : "test.war")
+2014-04-16 21:18:26,114 INFO  [java.lang.Class] (default task-2) Aircraft created a99a382d-7ac8-4b01-8929-3a5cdee250a1
+2014-04-16 21:18:26,145 INFO  [stdout] (default task-2) Hibernate: insert into AIR_AIRCRAFT (registration, id) values (?, ?)
+2014-04-16 21:18:26,171 INFO  [stdout] (default task-2) Hibernate: select aircraft0_.id as id1_0_0_, aircraft0_.registration as registra2_0_0_ from AIR_AIRCRAFT aircraft0_ where aircraft0_.id=?
+2014-04-16 21:18:26,226 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017535: Unregistered web context: /test
+2014-04-16 21:18:26,246 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 21) JBAS011410: Stopping Persistence Unit (phase 2 of 2) Service 'test.war#bookmywings'
+2014-04-16 21:18:26,248 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016009: Stopping weld service for deployment test.war
+2014-04-16 21:18:26,269 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 21) JBAS011410: Stopping Persistence Unit (phase 1 of 2) Service 'test.war#bookmywings'
+2014-04-16 21:18:26,283 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015877: Stopped deployment test.war (runtime-name: test.war) in 66ms
+2014-04-16 21:18:26,299 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014901: Content removed from location /Users/henry/dev/workspaces/BookMyWings/book-my-wings/bmw-integration-test/target/wildfly-run/wildfly-8.0.0.Final/standalone/data/content/88/426fdcdd8a588f374d14300367ccc5921c091a/content
+2014-04-16 21:18:26,299 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018558: Undeployed "test.war" (runtime-name: "test.war")
+2014-04-16 21:18:27,042 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) JBAS010409: Unbound data source [java:jboss/datasources/ExampleDS]
+2014-04-16 21:18:27,043 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017532: Host default-host stopping
+2014-04-16 21:18:27,050 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017521: Undertow HTTP listener default suspending
+2014-04-16 21:18:27,051 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017520: Undertow HTTP listener default stopped, was bound to /127.0.0.1:8080
+2014-04-16 21:18:27,054 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017506: Undertow 1.0.0.Final stopping
+2014-04-16 21:18:27,067 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) JBAS010418: Stopped Driver service with driver-name = h2
+2014-04-16 21:18:27,072 INFO  [org.jboss.as] (MSC service thread 1-7) JBAS015950: WildFly 8.0.0.Final "WildFly" stopped in 28ms

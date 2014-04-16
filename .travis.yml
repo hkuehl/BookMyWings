@@ -1,5 +1,7 @@
 language: java
-install: mvn wildfly:start test
+install: 
+  - mvn install -DskipTests=true
+  - mvn test -pl bmw-integration-test -Ptravis
 deploy:
   provider: openshift
   user: henry.kuehl@prodyna.com
