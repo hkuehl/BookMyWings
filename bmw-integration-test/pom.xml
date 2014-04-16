@@ -8,6 +8,36 @@
 	</parent>
 	<artifactId>bmw-integration-test</artifactId>
 
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-maven-plugin</artifactId>
+					<version>1.0.1.Final</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<!-- To use the plugin goals in your POM or parent POM -->
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<systemProperties>
+						<property>
+							<name>java.util.logging.manager</name>
+							<value>org.jboss.logmanager.LogManager</value>
+						</property>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -31,4 +61,9 @@
 			<type>ejb</type>
 		</dependency>
 	</dependencies>
+
+	<properties>
+		<version.org.jboss.jbossas>8.0.0.Final</version.org.jboss.jbossas>
+		<JBOSS_HOME>${project.build.directory}/jboss-${version.org.jboss.jbossas}</JBOSS_HOME>
+	</properties>
 </project>
