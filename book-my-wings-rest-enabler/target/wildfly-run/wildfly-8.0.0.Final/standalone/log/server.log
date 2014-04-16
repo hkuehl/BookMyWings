@@ -1,7 +1,7 @@
-2014-04-16 20:03:03,893 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final
-2014-04-16 20:03:04,448 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.0.Final
-2014-04-16 20:03:04,793 INFO  [org.jboss.as] (MSC service thread 1-7) JBAS015899: WildFly 8.0.0.Final "WildFly" starting
-2014-04-16 20:03:04,801 DEBUG [org.jboss.as.config] (MSC service thread 1-7) Configured system properties:
+2014-04-16 21:35:51,731 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.0.Final
+2014-04-16 21:35:52,347 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.0.Final
+2014-04-16 21:35:52,710 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.0.0.Final "WildFly" starting
+2014-04-16 21:35:52,720 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
 	awt.toolkit = sun.lwawt.macosx.LWCToolkit
 	file.encoding = UTF-8
 	file.encoding.pkg = sun.io
@@ -88,103 +88,38 @@
 	user.language = de
 	user.name = henry
 	user.timezone = Europe/Berlin
-2014-04-16 20:03:04,805 DEBUG [org.jboss.as.config] (MSC service thread 1-7) VM Arguments: -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Dorg.jboss.boot.log.file=/Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/standalone/configuration/logging.properties 
-2014-04-16 20:03:07,237 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
-2014-04-16 20:03:07,263 INFO  [org.xnio] (MSC service thread 1-2) XNIO version 3.2.0.Final
-2014-04-16 20:03:07,274 INFO  [org.xnio.nio] (MSC service thread 1-2) XNIO NIO Implementation Version 3.2.0.Final
-2014-04-16 20:03:07,328 INFO  [org.jboss.remoting] (MSC service thread 1-2) JBoss Remoting version 4.0.0.Final
-2014-04-16 20:03:07,434 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 33) JBAS010280: Activating Infinispan subsystem.
-2014-04-16 20:03:07,449 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 46) JBAS013171: Activating Security Subsystem
-2014-04-16 20:03:07,466 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 50) JBAS015537: Activating WebServices Extension
-2014-04-16 20:03:07,469 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 39) JBAS012615: Activated the following JSF Implementations: [main]
-2014-04-16 20:03:07,481 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 41) JBAS011800: Activating Naming Subsystem
-2014-04-16 20:03:07,510 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017502: Undertow 1.0.0.Final starting
-2014-04-16 20:03:07,511 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017502: Undertow 1.0.0.Final starting
-2014-04-16 20:03:07,518 INFO  [org.jboss.as.security] (MSC service thread 1-5) JBAS013170: Current PicketBox version=4.0.20.Final
-2014-04-16 20:03:07,603 INFO  [org.jboss.as.naming] (MSC service thread 1-6) JBAS011802: Starting Naming Service
-2014-04-16 20:03:07,608 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) JBAS015400: Bound mail session [java:jboss/mail/Default]
-2014-04-16 20:03:07,620 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-8) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.3.Final)
-2014-04-16 20:03:07,641 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 28) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
-2014-04-16 20:03:07,668 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = h2
-2014-04-16 20:03:07,858 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017527: Creating file handler for path /Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/welcome-content
-2014-04-16 20:03:07,900 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017525: Started server default-server.
-2014-04-16 20:03:07,915 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017531: Host default-host starting
-2014-04-16 20:03:08,071 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-7) MSC000001: Failed to start service jboss.undertow.listener.default: org.jboss.msc.service.StartException in service jboss.undertow.listener.default: Could not start http listener
-	at org.wildfly.extension.undertow.ListenerService.start(ListenerService.java:135)
-	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1948) [jboss-msc-1.2.0.Final.jar:1.2.0.Final]
-	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1881) [jboss-msc-1.2.0.Final.jar:1.2.0.Final]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_51]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_51]
-	at java.lang.Thread.run(Thread.java:744) [rt.jar:1.7.0_51]
-Caused by: java.net.BindException: Address already in use
-	at sun.nio.ch.Net.bind0(Native Method) [rt.jar:1.7.0_51]
-	at sun.nio.ch.Net.bind(Net.java:444) [rt.jar:1.7.0_51]
-	at sun.nio.ch.Net.bind(Net.java:436) [rt.jar:1.7.0_51]
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214) [rt.jar:1.7.0_51]
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) [rt.jar:1.7.0_51]
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:67) [rt.jar:1.7.0_51]
-	at org.xnio.nio.NioXnioWorker.createTcpConnectionServer(NioXnioWorker.java:175)
-	at org.xnio.XnioWorker.createStreamConnectionServer(XnioWorker.java:242)
-	at org.wildfly.extension.undertow.HttpListenerService.startListening(HttpListenerService.java:112)
-	at org.wildfly.extension.undertow.ListenerService.start(ListenerService.java:132)
-	... 5 more
-
-2014-04-16 20:03:08,437 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-5) JBAS015012: Started FileSystemDeploymentService for directory /Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/standalone/deployments
-2014-04-16 20:03:08,498 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
-2014-04-16 20:03:08,520 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-6) MSC000001: Failed to start service jboss.serverManagement.controller.management.http: org.jboss.msc.service.StartException in service jboss.serverManagement.controller.management.http: JBAS015811: Failed to start the http-interface service
-	at org.jboss.as.server.mgmt.UndertowHttpManagementService.start(UndertowHttpManagementService.java:258) [wildfly-server-8.0.0.Final.jar:8.0.0.Final]
-	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1948) [jboss-msc-1.2.0.Final.jar:1.2.0.Final]
-	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1881) [jboss-msc-1.2.0.Final.jar:1.2.0.Final]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_51]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_51]
-	at java.lang.Thread.run(Thread.java:744) [rt.jar:1.7.0_51]
-Caused by: java.lang.RuntimeException: java.net.BindException: Address already in use
-	at org.jboss.as.domain.http.server.ManagementHttpServer.start(ManagementHttpServer.java:156)
-	at org.jboss.as.server.mgmt.UndertowHttpManagementService.start(UndertowHttpManagementService.java:224) [wildfly-server-8.0.0.Final.jar:8.0.0.Final]
-	... 5 more
-Caused by: java.net.BindException: Address already in use
-	at sun.nio.ch.Net.bind0(Native Method) [rt.jar:1.7.0_51]
-	at sun.nio.ch.Net.bind(Net.java:444) [rt.jar:1.7.0_51]
-	at sun.nio.ch.Net.bind(Net.java:436) [rt.jar:1.7.0_51]
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214) [rt.jar:1.7.0_51]
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) [rt.jar:1.7.0_51]
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:67) [rt.jar:1.7.0_51]
-	at org.xnio.nio.NioXnioWorker.createTcpConnectionServer(NioXnioWorker.java:175)
-	at org.xnio.XnioWorker.createStreamConnectionServer(XnioWorker.java:242)
-	at org.jboss.as.domain.http.server.ManagementHttpServer.start(ManagementHttpServer.java:135)
-	... 6 more
-
-2014-04-16 20:03:08,527 ERROR [org.jboss.as.controller.management-operation] (Controller Boot Thread) JBAS014613: Operation ("add") failed - address: ([
-    ("core-service" => "management"),
-    ("management-interface" => "http-interface")
-]) - failure description: {"JBAS014671: Failed services" => {"jboss.serverManagement.controller.management.http" => "org.jboss.msc.service.StartException in service jboss.serverManagement.controller.management.http: JBAS015811: Failed to start the http-interface service
-    Caused by: java.lang.RuntimeException: java.net.BindException: Address already in use
-    Caused by: java.net.BindException: Address already in use"}}
-2014-04-16 20:03:08,531 ERROR [org.jboss.as.controller.management-operation] (Controller Boot Thread) JBAS014613: Operation ("add") failed - address: ([("subsystem" => "webservices")]) - failure description: {"JBAS014879: One or more services were unable to start due to one or more indirect dependencies not being available." => {
-    "Services that were unable to start:" => ["jboss.ws.config"],
-    "Services that may be the cause:" => ["jboss.remoting.remotingConnectorInfoService.http-remoting-connector"]
-}}
-2014-04-16 20:03:08,543 ERROR [org.jboss.as.controller.management-operation] (Controller Boot Thread) JBAS014613: Operation ("add") failed - address: ([
-    ("subsystem" => "undertow"),
-    ("server" => "default-server"),
-    ("http-listener" => "default")
-]) - failure description: {"JBAS014671: Failed services" => {"jboss.undertow.listener.default" => "org.jboss.msc.service.StartException in service jboss.undertow.listener.default: Could not start http listener
-    Caused by: java.net.BindException: Address already in use"}}
-2014-04-16 20:03:08,545 ERROR [org.jboss.as.controller.management-operation] (Controller Boot Thread) JBAS014613: Operation ("add") failed - address: ([
-    ("subsystem" => "ejb3"),
-    ("service" => "remote")
-]) - failure description: {"JBAS014771: Services with missing/unavailable dependencies" => ["jboss.ejb3.connector is missing [jboss.remoting.remotingConnectorInfoService.http-remoting-connector]"]}
-2014-04-16 20:03:08,686 INFO  [org.jboss.as.controller] (Controller Boot Thread) JBAS014774: Service status report
-JBAS014775:    New missing/unsatisfied dependencies:
-      service jboss.remoting.remotingConnectorInfoService.http-remoting-connector (missing) dependents: [service jboss.ejb3.connector] 
-JBAS014777:   Services which failed to start:      service jboss.undertow.listener.default: org.jboss.msc.service.StartException in service jboss.undertow.listener.default: Could not start http listener
-      service jboss.serverManagement.controller.management.http: org.jboss.msc.service.StartException in service jboss.serverManagement.controller.management.http: JBAS015811: Failed to start the http-interface service
-
-2014-04-16 20:03:08,695 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015964: Http management interface is not enabled
-2014-04-16 20:03:08,695 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015954: Admin console is not enabled
-2014-04-16 20:03:08,695 ERROR [org.jboss.as] (Controller Boot Thread) JBAS015875: WildFly 8.0.0.Final "WildFly" started (with errors) in 5680ms - Started 170 of 228 services (4 services failed or missing dependencies, 80 services are lazy, passive or on-demand)
-2014-04-16 20:03:18,914 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-6) JBAS010409: Unbound data source [java:jboss/datasources/ExampleDS]
-2014-04-16 20:03:18,969 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017532: Host default-host stopping
-2014-04-16 20:03:18,979 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017506: Undertow 1.0.0.Final stopping
-2014-04-16 20:03:18,986 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010418: Stopped Driver service with driver-name = h2
-2014-04-16 20:03:19,029 INFO  [org.jboss.as] (MSC service thread 1-5) JBAS015950: WildFly 8.0.0.Final "WildFly" stopped in 170ms
+2014-04-16 21:35:52,727 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -Xms64m -Xmx512m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Dorg.jboss.boot.log.file=/Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/standalone/log/server.log -Dlogging.configuration=file:/Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/standalone/configuration/logging.properties 
+2014-04-16 21:35:55,082 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+2014-04-16 21:35:55,102 INFO  [org.xnio] (MSC service thread 1-4) XNIO version 3.2.0.Final
+2014-04-16 21:35:55,110 INFO  [org.xnio.nio] (MSC service thread 1-4) XNIO NIO Implementation Version 3.2.0.Final
+2014-04-16 21:35:55,157 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 33) JBAS010280: Activating Infinispan subsystem.
+2014-04-16 21:35:55,165 INFO  [org.jboss.remoting] (MSC service thread 1-4) JBoss Remoting version 4.0.0.Final
+2014-04-16 21:35:55,244 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 46) JBAS013171: Activating Security Subsystem
+2014-04-16 21:35:55,267 INFO  [org.jboss.as.security] (MSC service thread 1-6) JBAS013170: Current PicketBox version=4.0.20.Final
+2014-04-16 21:35:55,267 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 50) JBAS015537: Activating WebServices Extension
+2014-04-16 21:35:55,270 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-1) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.3.Final)
+2014-04-16 21:35:55,280 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 41) JBAS011800: Activating Naming Subsystem
+2014-04-16 21:35:55,288 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 28) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+2014-04-16 21:35:55,289 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 39) JBAS012615: Activated the following JSF Implementations: [main]
+2014-04-16 21:35:55,371 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017502: Undertow 1.0.0.Final starting
+2014-04-16 21:35:55,379 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010417: Started Driver service with driver-name = h2
+2014-04-16 21:35:55,381 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017502: Undertow 1.0.0.Final starting
+2014-04-16 21:35:55,380 INFO  [org.jboss.as.naming] (MSC service thread 1-7) JBAS011802: Starting Naming Service
+2014-04-16 21:35:55,399 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) JBAS015400: Bound mail session [java:jboss/mail/Default]
+2014-04-16 21:35:55,590 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017525: Started server default-server.
+2014-04-16 21:35:55,594 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 49) JBAS017527: Creating file handler for path /Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/welcome-content
+2014-04-16 21:35:55,690 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017531: Host default-host starting
+2014-04-16 21:35:55,780 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017519: Undertow HTTP listener default listening on /127.0.0.1:8080
+2014-04-16 21:35:56,404 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) JBAS015012: Started FileSystemDeploymentService for directory /Users/henry/dev/workspaces/BookMyWings/book-my-wings/book-my-wings-rest-enabler/target/wildfly-run/wildfly-8.0.0.Final/standalone/deployments
+2014-04-16 21:35:56,494 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-6) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+2014-04-16 21:35:57,193 INFO  [org.jboss.ws.common.management] (MSC service thread 1-2) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.2.3.Final
+2014-04-16 21:35:57,266 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+2014-04-16 21:35:57,267 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+2014-04-16 21:35:57,267 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.0.0.Final "WildFly" started in 6343ms - Started 183 of 232 services (80 services are lazy, passive or on-demand)
+2014-04-16 21:36:04,333 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017532: Host default-host stopping
+2014-04-16 21:36:04,338 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) JBAS010409: Unbound data source [java:jboss/datasources/ExampleDS]
+2014-04-16 21:36:04,358 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017521: Undertow HTTP listener default suspending
+2014-04-16 21:36:04,362 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017520: Undertow HTTP listener default stopped, was bound to /127.0.0.1:8080
+2014-04-16 21:36:04,367 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017506: Undertow 1.0.0.Final stopping
+2014-04-16 21:36:04,368 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010418: Stopped Driver service with driver-name = h2
+2014-04-16 21:36:04,380 INFO  [org.jboss.as] (MSC service thread 1-3) JBAS015950: WildFly 8.0.0.Final "WildFly" stopped in 28ms
