@@ -2,6 +2,8 @@ package com.prodyna.bmw.server.aircraft;
 
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Local;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -19,15 +21,18 @@ import javax.ws.rs.QueryParam;
  * @author Henry Kuehl, PRODYNA AG
  */
 @Local
-@Path("/aircraft")
+@Path("/aircrafts")
 @Produces("application/json")
 @Consumes("application/json")
+@PermitAll
 public interface AircraftService {
 
 	@POST
+	@RolesAllowed("Manager")
 	Aircraft addAircraft(Aircraft aircraft);
 
 	@DELETE
+	@RolesAllowed("Manager")
 	@Path("{aircraftId}")
 	void deleteAircraft(@PathParam("aircraftId") String uuid);
 
@@ -37,9 +42,10 @@ public interface AircraftService {
 
 	@GET
 	List<Aircraft> readAllAircrafts(@QueryParam("start") @Min(0) Integer start,
-			@QueryParam("pageSize") @Max(1000) Integer pageSize);
+			@QueryParam("pageSize") @Min(1) @Max(1000) Integer pageSize);
 
 	@PUT
+	@RolesAllowed("Manager")
 	void updateAircraft(Aircraft aircraft);
 
 }
