@@ -16,7 +16,6 @@ import com.prodyna.bmw.server.aircraft.AircraftService;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
- * 
  */
 @Ignore
 @RunWith(Arquillian.class)
