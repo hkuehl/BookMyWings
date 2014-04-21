@@ -10,5 +10,4 @@ import javax.ws.rs.core.Application;
  */
 @ApplicationPath("/rest")
 public class BookMyWingsApplication extends Application {
-
 }

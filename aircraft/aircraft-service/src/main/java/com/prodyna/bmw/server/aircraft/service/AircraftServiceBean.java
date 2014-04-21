@@ -1,5 +1,7 @@
 package com.prodyna.bmw.server.aircraft.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -59,7 +61,23 @@ public class AircraftServiceBean implements AircraftService {
 	 */
 	@Override
 	public Aircraft getAircraft(String uuid) {
+		LOGGER.info("get Aircraft called with id {}", uuid);
 		return entityManager.find(Aircraft.class, uuid);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.bmw.server.aircraft.AircraftService#readAllAircrafts(java
+	 * .lang.Long, java.lang.Long)
+	 */
+	@Override
+	public List<Aircraft> readAllAircrafts(Integer start, Integer pageSize) {
+		return entityManager
+				.createNamedQuery(Aircraft.QUERY_GET_ALL_AIRCRAFTS_PAGINATED,
+						Aircraft.class).setFirstResult(start)
+				.setMaxResults(pageSize).getResultList();
 	}
 
 	/*
@@ -74,5 +92,4 @@ public class AircraftServiceBean implements AircraftService {
 		entityManager.merge(aircraft);
 		LOGGER.info("Updated aircraft {}", aircraft.getId());
 	}
-
 }

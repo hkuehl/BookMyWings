@@ -37,6 +37,11 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
+				<plugin>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-maven-plugin</artifactId>
+					<version>1.0.1.Final</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -68,6 +73,11 @@
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-annotations</artifactId>
 				<version>3.5.6-Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.5</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

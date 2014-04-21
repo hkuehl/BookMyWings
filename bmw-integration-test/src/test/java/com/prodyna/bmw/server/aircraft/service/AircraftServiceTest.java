@@ -35,10 +35,10 @@ public class AircraftServiceTest {
 
 	@Test
 	public void testCreateAircraft() throws InterruptedException {
+
 		Aircraft aircraft = new Aircraft();
 		aircraft.setRegistration("D-EKF22");
 		aircraftService.addAircraft(aircraft);
-
 		Assert.assertTrue(aircraftService.getAircraft(aircraft.getId()) != null);
 	}
 

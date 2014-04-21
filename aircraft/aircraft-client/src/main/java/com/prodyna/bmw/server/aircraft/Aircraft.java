@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -13,8 +15,12 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Henry Kuehl, PRODYNA AG
  * 
  */
-@Entity(name = "AIR_AIRCRAFT")
+@Entity
+@NamedQuery(name = Aircraft.QUERY_GET_ALL_AIRCRAFTS_PAGINATED, query = "select a from Aircraft a order by a.registration")
+@Table(name = "AIR_AIRCRAFT")
 public class Aircraft {
+
+	public static final String QUERY_GET_ALL_AIRCRAFTS_PAGINATED = "Aircraft.findAllPaginated";
 
 	@Id
 	@GeneratedValue(generator = "uuid")
