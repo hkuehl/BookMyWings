@@ -18,6 +18,7 @@ import com.prodyna.bmw.server.aircraft.AircraftService;
  * @author Henry Kuehl, PRODYNA AG
  * 
  */
+@Ignore
 @RunWith(Arquillian.class)
 public class AircraftServiceTest {
 
@@ -34,7 +35,6 @@ public class AircraftServiceTest {
 	@Inject
 	private AircraftService aircraftService;
 
-	@Ignore
 	@Test
 	public void testCreateAircraft() throws InterruptedException {
 
