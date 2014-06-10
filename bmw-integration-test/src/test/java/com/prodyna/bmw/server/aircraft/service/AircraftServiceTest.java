@@ -7,7 +7,6 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -17,7 +16,6 @@ import com.prodyna.bmw.server.aircraft.AircraftService;
 /**
  * @author Henry Kuehl, PRODYNA AG
  */
-@Ignore
 @RunWith(Arquillian.class)
 public class AircraftServiceTest {
 
@@ -35,12 +33,27 @@ public class AircraftServiceTest {
 	private AircraftService aircraftService;
 
 	@Test
-	public void testCreateAircraft() throws InterruptedException {
-
+	public void testCRUDAircraft() {
 		Aircraft aircraft = new Aircraft();
 		aircraft.setRegistration("D-EKF22");
-		aircraftService.addAircraft(aircraft);
+		aircraft = aircraftService.addAircraft(aircraft);
+
+		// does the DB generate a uuid??
 		Assert.assertTrue(aircraftService.getAircraft(aircraft.getId()) != null);
+
+		// check for equality
+		Assert.assertEquals(aircraft,
+				aircraftService.getAircraft(aircraft.getId()));
+
+		// update
+		aircraft.setRegistration("D-EKF23");
+		aircraftService.updateAircraft(aircraft);
+		Assert.assertEquals("D-EKF23",
+				aircraftService.getAircraft(aircraft.getId()).getRegistration());
+
+		// delete
+		aircraftService.deleteAircraft(aircraft.getId());
+		Assert.assertNull(aircraftService.getAircraft(aircraft.getId()));
 	}
 
 }

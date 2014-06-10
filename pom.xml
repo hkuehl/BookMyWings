@@ -87,6 +87,8 @@
 		<module>bmw-integration-test</module>
 		<module>book-my-wings-ear</module>
 		<module>book-my-wings-rest-enabler</module>
+		<module>pilot</module>
+		<module>booking</module>
 	</modules>
 	<profiles>
 		<profile>

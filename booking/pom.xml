@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.prodyna.bmw.server</groupId>
+    <artifactId>book-my-wings</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>booking</artifactId>
+  <packaging>pom</packaging>
+  <name>booking</name>
+  <description>Parent-Project for the Booking-Entity</description>
+  <modules>
+  	<module>booking-client</module>
+  	<module>booking-service</module>
+  </modules>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.prodyna.bmw.server</groupId>
+  		<artifactId>aircraft-client</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.prodyna.bmw.server</groupId>
+  		<artifactId>pilot-client</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+</project>
