@@ -15,7 +15,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
 
 import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.aircraft.AircraftService;
@@ -48,9 +47,6 @@ public class BookingServiceTest {
 
 	@Inject
 	private PilotService pilotService;
-
-	@Inject
-	private Logger LOG;
 
 	private Aircraft aircraft, aircraft2;
 	private Pilot pilot;
