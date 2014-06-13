@@ -1,5 +1,5 @@
 language: java
-install: mvn wildfly:start
+install: mvn -pl bmw-integration-test wildfly:start
 deploy:
   provider: openshift
   user: henry.kuehl@prodyna.com
