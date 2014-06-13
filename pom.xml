@@ -37,16 +37,11 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
-						<plugins>
-			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
-				<configuration>
-					<serverConfig>../../../../test-classes/standalone.xml</serverConfig>
-				</configuration>
-			</plugin>
-		</plugins>
+				<plugin>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-maven-plugin</artifactId>
+					<version>1.0.2.Final</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
