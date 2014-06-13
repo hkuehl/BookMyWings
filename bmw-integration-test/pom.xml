@@ -55,6 +55,11 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-embedded</artifactId>
+			<version>8.1.0.Final</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>

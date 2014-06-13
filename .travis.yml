@@ -1,5 +1,5 @@
 language: java
-install: true
+install: mvn wildfly:start
 deploy:
   provider: openshift
   user: henry.kuehl@prodyna.com
