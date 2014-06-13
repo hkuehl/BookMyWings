@@ -18,6 +18,17 @@
 				</excludes>
 			</testResource>
 		</testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+				<configuration>
+					<serverConfig>../../../../test-classes/standalone.xml</serverConfig>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencies>
@@ -55,11 +66,6 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
-		<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-embedded</artifactId>
-			<version>8.1.0.Final</version>
-		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -72,7 +78,7 @@
 				<dependency>
 					<groupId>org.wildfly</groupId>
 					<artifactId>wildfly-arquillian-container-remote</artifactId>
-					<version>8.0.0.Final</version>
+					<version>8.1.0.Final</version>
 				</dependency>
 			</dependencies>
 		</profile>
