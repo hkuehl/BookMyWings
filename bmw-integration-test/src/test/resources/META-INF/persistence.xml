@@ -4,7 +4,7 @@
 		<description>Test configuration BookMyWings Persistence Unit.</description>
 		<jta-data-source>java:jboss/datasources/BookMyWingsDS</jta-data-source>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
