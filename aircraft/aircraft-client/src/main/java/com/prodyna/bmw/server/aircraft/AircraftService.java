@@ -24,28 +24,31 @@ import javax.ws.rs.QueryParam;
 @Path("/aircrafts")
 @Produces("application/json")
 @Consumes("application/json")
-@PermitAll
 public interface AircraftService {
 
 	@POST
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
+	@Path("/aircraft")
 	Aircraft addAircraft(Aircraft aircraft);
 
 	@DELETE
-	@RolesAllowed("Manager")
-	@Path("{aircraftId}")
+	@RolesAllowed("admin")
+	@Path("/aricraft/{aircraftId}")
 	void deleteAircraft(@PathParam("aircraftId") String uuid);
 
 	@GET
-	@Path("{aircraftId}")
+	@PermitAll
+	@Path("/aircraft/{aircraftId}")
 	Aircraft getAircraft(@PathParam("aircraftId") String uuid);
 
 	@GET
+	@RolesAllowed("admin")
 	List<Aircraft> readAllAircrafts(@QueryParam("start") @Min(0) Integer start,
 			@QueryParam("pageSize") @Min(1) @Max(1000) Integer pageSize);
 
 	@PUT
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
+	@Path("/aircraft")
 	void updateAircraft(Aircraft aircraft);
 
 }
