@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>BookMyWings</web-resource-name>
-			<description>Securtiy-Constraint for REST-Services</description>
-			<url-pattern>/*</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>Manager</role-name>
-		</auth-constraint>
-	</security-constraint>
+
+	<context-param>
+		<param-name>resteasy.role.based.security</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 	<login-config>
 		<auth-method>BASIC</auth-method>
-		<realm-name>ApplicationRealm</realm-name>
+		<realm-name>BookMyWingsRealm</realm-name>
 	</login-config>
-	<security-role>
-		<role-name>Manager</role-name>
-	</security-role>
 </web-app>   
