@@ -6,8 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.slf4j.Logger;
-
+import com.prodyna.bmw.server.common.monitoring.Monitored;
 import com.prodyna.bmw.server.pilot.Pilot;
 import com.prodyna.bmw.server.pilot.PilotService;
 
@@ -15,14 +14,12 @@ import com.prodyna.bmw.server.pilot.PilotService;
  * @author Henry Kuehl, PRODYNA AG
  * 
  */
+@Monitored
 @Stateless
 public class PilotServiceBean implements PilotService {
 
 	@Inject
 	private EntityManager em;
-
-	@Inject
-	private Logger LOG;
 
 	/*
 	 * (non-Javadoc)
@@ -34,7 +31,6 @@ public class PilotServiceBean implements PilotService {
 	@Override
 	public Pilot addPilot(Pilot pilot) {
 		em.persist(pilot);
-		LOG.info("Persisted Pilot with id {}", pilot.getId());
 		return pilot;
 	}
 

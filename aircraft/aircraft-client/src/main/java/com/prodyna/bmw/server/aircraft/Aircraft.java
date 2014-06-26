@@ -90,4 +90,9 @@ public class Aircraft {
 		this.registration = registration;
 	}
 
+	@Override
+	public String toString() {
+		return "Aircraft [id=" + id + ", registration=" + registration + "]";
+	}
+
 }

@@ -6,20 +6,17 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.slf4j.Logger;
-
 import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.aircraft.AircraftService;
+import com.prodyna.bmw.server.common.monitoring.Monitored;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
  * 
  */
 @Stateless
+@Monitored
 public class AircraftServiceBean implements AircraftService {
-
-	@Inject
-	private Logger LOGGER;
 
 	@Inject
 	private EntityManager entityManager;
@@ -34,7 +31,6 @@ public class AircraftServiceBean implements AircraftService {
 	@Override
 	public Aircraft addAircraft(Aircraft aircraft) {
 		entityManager.persist(aircraft);
-		LOGGER.info("Aircraft created {}", aircraft.getId());
 		return aircraft;
 	}
 
@@ -49,7 +45,6 @@ public class AircraftServiceBean implements AircraftService {
 	public void deleteAircraft(String uuid) {
 		Aircraft aircraft = entityManager.find(Aircraft.class, uuid);
 		entityManager.remove(aircraft);
-		LOGGER.info("Deleted aircraft {}", uuid);
 	}
 
 	/*
@@ -61,7 +56,6 @@ public class AircraftServiceBean implements AircraftService {
 	 */
 	@Override
 	public Aircraft getAircraft(String uuid) {
-		LOGGER.info("get Aircraft called with id {}", uuid);
 		return entityManager.find(Aircraft.class, uuid);
 	}
 
@@ -90,6 +84,5 @@ public class AircraftServiceBean implements AircraftService {
 	@Override
 	public void updateAircraft(Aircraft aircraft) {
 		entityManager.merge(aircraft);
-		LOGGER.info("Updated aircraft {}", aircraft.getId());
 	}
 }

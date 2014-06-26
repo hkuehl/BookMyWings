@@ -7,11 +7,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.slf4j.Logger;
-
 import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.booking.Booking;
 import com.prodyna.bmw.server.booking.BookingService;
+import com.prodyna.bmw.server.common.monitoring.Monitored;
 import com.prodyna.bmw.server.pilot.Pilot;
 import com.prodyna.bmw.server.pilot.PilotService;
 
@@ -19,6 +18,7 @@ import com.prodyna.bmw.server.pilot.PilotService;
  * @author Henry Kuehl, PRODYNA AG
  * 
  */
+@Monitored
 @Stateless
 public class BookingServiceBean implements BookingService {
 
@@ -27,9 +27,6 @@ public class BookingServiceBean implements BookingService {
 
 	@Inject
 	private PilotService pilotService;
-
-	@Inject
-	private Logger LOG;
 
 	/*
 	 * (non-Javadoc)
@@ -41,7 +38,6 @@ public class BookingServiceBean implements BookingService {
 	@Override
 	public Booking addBooking(Booking booking) {
 		em.persist(booking);
-		LOG.info("Added Booking: " + booking);
 		return booking;
 	}
 
@@ -119,7 +115,6 @@ public class BookingServiceBean implements BookingService {
 	 */
 	@Override
 	public void updateBooking(Booking booking) {
-
 		em.merge(booking);
 	}
 }

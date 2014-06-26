@@ -205,20 +205,9 @@ public class Booking implements Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder toStringInfo = new StringBuilder();
-		toStringInfo.append(this.getClass().getName());
-		toStringInfo.append(": bookingId: ");
-		toStringInfo.append(bookingId);
-		toStringInfo.append(": aircraftId: ");
-		toStringInfo.append(aircraft.getId());
-		toStringInfo.append(", pilotId: ");
-		toStringInfo.append(pilot.getId());
-		toStringInfo.append(", start: ");
-		toStringInfo.append(startDate);
-		toStringInfo.append(", end: ");
-		toStringInfo.append(endDate);
-
-		return toStringInfo.toString();
+		return "Booking [bookingId=" + bookingId + ", aircraft=" + aircraft
+				+ ", pilot=" + pilot + ", startDate=" + startDate
+				+ ", endDate=" + endDate + "]";
 	}
 
 }

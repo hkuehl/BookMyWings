@@ -107,4 +107,10 @@ public class Pilot {
 		this.lastName = lastName;
 	}
 
+	@Override
+	public String toString() {
+		return "Pilot [id=" + id + ", lastName=" + lastName + ", firstName="
+				+ firstName + "]";
+	}
+
 }
