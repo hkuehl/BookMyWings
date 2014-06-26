@@ -39,7 +39,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.6</version>
+				<version>1.7</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -51,7 +51,6 @@
 									<fileset dir="${basedir}/src/test/resources" includes="standalone.xml" />
 								</copy>
 							</target>
-
 						</configuration>
 						<goals>
 							<goal>run</goal>
