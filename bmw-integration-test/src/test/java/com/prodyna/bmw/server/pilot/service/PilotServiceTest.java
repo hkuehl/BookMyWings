@@ -2,10 +2,7 @@ package com.prodyna.bmw.server.pilot.service;
 
 import javax.inject.Inject;
 
-import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,16 +16,6 @@ import com.prodyna.bmw.server.pilot.PilotService;
  */
 @RunWith(Arquillian.class)
 public class PilotServiceTest {
-
-	@Deployment
-	public static WebArchive createDeployment() {
-		WebArchive wa = ShrinkWrap.create(WebArchive.class, "test.war");
-		wa.addPackages(true, "com.prodyna.bmw.server");
-		wa.addAsResource("META-INF/persistence.xml");
-		wa.addAsResource("META-INF/beans.xml");
-		System.out.println(wa.toString(true));
-		return wa;
-	}
 
 	@Inject
 	private PilotService pilotService;
