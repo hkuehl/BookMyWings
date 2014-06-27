@@ -1,12 +1,3 @@
 language: java
 install: 
   - mvn validate
-deploy:
-  provider: openshift
-  user: henry.kuehl@prodyna.com
-  password:
-    secure: UeXsBqSujJ+wmqWbTY+8Ex9Z3JwXAwW80RilchfO9V5oJFctdHnfpG+Oe6LbJh1ofbtShgZet3BK/TsjQ+WvupWjvtb+d7w0Ws9OOE9YGWxWL+2ScFBRwmA9b2Gs+VgnsMoRT8Xr2Rw2GWv8TrUSIabxv5XGaXrUPhu0A8uzhxg=
-  app: BookMyWings
-  domain: http://wildfly8-bookmywings.rhcloud.com
-  on:
-    repo: hkuehl/BookMyWings
