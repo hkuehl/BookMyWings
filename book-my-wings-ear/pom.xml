@@ -21,7 +21,7 @@
 					<modules>
 						<webModule>
 							<groupId>com.prodyna.bmw.server</groupId>
-							<artifactId>book-my-wings-rest-enabler</artifactId>
+							<artifactId>book-my-wings-web</artifactId>
 							<contextRoot>/book-my-wings</contextRoot>
 						</webModule>
 					</modules>
@@ -42,12 +42,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>book-my-wings-rest-enabler</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>com.prodyna.bmw.server</groupId>
 			<artifactId>pilot-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
@@ -57,6 +51,12 @@
 			<artifactId>booking-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.prodyna.bmw.server</groupId>
+			<artifactId>book-my-wings-web</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
 		</dependency>
 	</dependencies>
 </project>

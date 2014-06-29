@@ -1,0 +1,61 @@
+<div role="main">
+	<div class="container-fluid">
+		<section id="directives-calendar" ng-controller="BookingcalendarCtrl">
+			<div class="well">
+				<div class="row-fluid">
+					<div class="span4">
+						<div class="alert-success"
+							ng-show="alertMessage != undefined && alertMessage != ''">
+							<div ng-controller="DropdowncontrollerCtrl">
+								<!-- Single button -->
+								<div class="btn-group" dropdown is-open="status.isopen">
+									<button type="button" class="btn btn-primary dropdown-toggle">
+										{{title}} <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li ng-repeat="a in aircrafts"><a
+											href="#/bookingCalendar" ng-click="toggled(a.registration)">{{a.registration}}</a></li>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div ng-controller="TimpickerController">
+
+								<timepicker ng-model="startTime" ng-change="changed()"
+									hour-step="hstep" minute-step="mstep"
+									show-meridian="ismeridian"></timepicker>
+								<timepicker ng-model="endTime" ng-change="changed()"
+									hour-step="hstep" minute-step="mstep"
+									show-meridian="ismeridian"></timepicker>
+								<pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+								<hr>
+								<button type="button" class="btn btn-primary"
+									ng-click="addEvent()">Add Event</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="span8">
+
+						<div select="renderCalender(myCalendar1);">
+							<div class="btn-toolbar">
+								<p class="pull-right lead">Calendar One View Options</p>
+								<div class="btn-group">
+									<button class="btn btn-success"
+										ng-click="changeView('agendaDay', myCalendar1)">{{agendaDay}}</button>
+									<button class="btn btn-success"
+										ng-click="changeView('agendaWeek', myCalendar1)">{{agendaWeek}}</button>
+									<button class="btn btn-success"
+										ng-click="changeView('month', myCalendar1)">{{agendaMonth}}</button>
+								</div>
+							</div>
+							<div class="calendar" ng-model="eventSources"
+								calendar="myCalendar1" config="uiConfig.calendar"
+								ui-calendar="uiConfig.calendar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

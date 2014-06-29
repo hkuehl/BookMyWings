@@ -35,6 +35,14 @@ public class Pilot {
 	@NotNull
 	private String firstName;
 
+	@Column(name = "pilot_user_name")
+	@NotNull
+	private String userName;
+
+	@Column(name = "password")
+	@NotNull
+	private String password;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

@@ -6,7 +6,7 @@
 		<artifactId>book-my-wings</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>book-my-wings-rest-enabler</artifactId>
+	<artifactId>book-my-wings-web</artifactId>
 	<packaging>war</packaging>
 
 	<dependencies>

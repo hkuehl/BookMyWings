@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -17,7 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @NamedQuery(name = Aircraft.QUERY_GET_ALL_AIRCRAFTS_PAGINATED, query = "select a from Aircraft a order by a.registration")
-@Table(name = "AIR_AIRCRAFT")
+@Table(name = "AIR_AIRCRAFT", uniqueConstraints = @UniqueConstraint(columnNames = { "registration" }))
 public class Aircraft {
 
 	public static final String QUERY_GET_ALL_AIRCRAFTS_PAGINATED = "Aircraft.findAllPaginated";

@@ -3,6 +3,7 @@
 	<name>book-my-wings-ear</name>
 	<comment></comment>
 	<projects>
+		<project>book-my-wings-web</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
