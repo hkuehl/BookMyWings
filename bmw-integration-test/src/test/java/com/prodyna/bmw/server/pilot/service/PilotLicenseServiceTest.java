@@ -35,7 +35,7 @@ public class PilotLicenseServiceTest {
 	@Test
 	public void testCRUDPilotLicenseService() {
 		AircraftType aircraftType = new AircraftType();
-		aircraftType.setTypeString("Boeing");
+		aircraftType.setTypeString("Airbus");
 		aircraftTypeService.addAircraftType(aircraftType);
 
 		Pilot pilot = new Pilot();
