@@ -11,49 +11,83 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12</version>
-				<configuration>
-					<systemProperties>
-						<property>
-							<name>java.util.logging.manager</name>
-							<value>org.jboss.logmanager.LogManager</value>
-						</property>
-					</systemProperties>
-				</configuration>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.2-SNAPSHOT</version>
 			</plugin>
-
 			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 				<executions>
 					<execution>
-						<phase>compile</phase>
+						<id>integration-tests</id>
+						<phase>test</phase>
 						<goals>
-							<goal>start</goal>
-							<goal>shutdown</goal>
+							<goal>test</goal>
 						</goals>
+						<configuration>
+							<argLine>-Xms128M -Xmx512M -XX:MaxPermSize=1024m
+								-XX:PermSize=1024m -Djboss.http.port=9999
+								-Djboss.management.http.port=9080</argLine>
+							<systemProperties>
+								<property>
+									<name>java.util.logging.manager</name>
+									<value>org.jboss.logmanager.LogManager</value>
+								</property>
+							</systemProperties>
+							<skip>false</skip>
+							<includes>
+								<include>
+									com/prodyna/bmw/server/**
+								</include>
+							</includes>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>compile</phase>
-						<configuration>
-							<target name="copy standalone.xml">
-								<copy
-									todir="${project.build.directory}/wildfly-run/wildfly-8.1.0.Final/standalone/configuration"
-									overwrite="true">
-									<fileset dir="${basedir}/src/test/resources" includes="standalone.xml" />
-								</copy>
-							</target>
-						</configuration>
+						<id>unpack</id>
+						<phase>process-test-classes</phase>
 						<goals>
-							<goal>run</goal>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.wildfly</groupId>
+									<artifactId>wildfly-dist</artifactId>
+									<version>8.1.0.Final</version>
+									<type>zip</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.6.4.201312101107</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -62,6 +96,19 @@
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.jboss.arquillian</groupId>
+			<artifactId>arquillian-bom</artifactId>
+			<version>1.1.3.Final</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.core</artifactId>
+			<version>0.6.4.201312101107</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -125,6 +172,12 @@
 			<artifactId>bmw-license-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.prodyna.bmw.server</groupId>
+			<artifactId>book-my-wings-web</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
 		</dependency>
 	</dependencies>
 </project>

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -70,20 +71,26 @@ public class Booking implements Serializable {
 
 	@ManyToOne
 	@NotNull
+	@Valid
 	private Aircraft aircraft;
 
 	@ManyToOne
 	@NotNull
+	@Valid
 	private Pilot pilot;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date startDate;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date endDate;
 
+	@NotNull
+	@Column(nullable = false)
 	private BookingState bookingState = BookingState.INITIAL;
 
 	private boolean dateEquals(Date thisDate, Date otherDate) {
