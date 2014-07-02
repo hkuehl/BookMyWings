@@ -26,6 +26,8 @@ public class PilotServiceTest {
 		Pilot pilot = new Pilot();
 		pilot.setFirstName("Alexander");
 		pilot.setLastName("Marcus");
+		pilot.setUserName("CoolUser");
+		pilot.setPassword("passwd");
 
 		pilotService.addPilot(pilot);
 
@@ -33,17 +35,21 @@ public class PilotServiceTest {
 		Assert.assertNotNull(pilot.getId());
 
 		// read
-		Assert.assertEquals(pilot, pilotService.getPilot(pilot.getId()));
+		Assert.assertEquals(pilot, pilotService.getPilotById(pilot.getId()));
 
 		// update
 		pilot.setFirstName("Henry");
 		pilotService.updatePilot(pilot);
-		Assert.assertEquals("Henry", pilotService.getPilot(pilot.getId())
+		Assert.assertEquals("Henry", pilotService.getPilotById(pilot.getId())
 				.getFirstName());
+
+		// custom finder
+		Assert.assertEquals("CoolUser",
+				pilotService.getPilotByUsername("CoolUser").getUserName());
 
 		// delete
 		pilotService.deletePilot(pilot.getId());
-		Assert.assertNull(pilotService.getPilot(pilot.getId()));
+		Assert.assertNull(pilotService.getPilotById(pilot.getId()));
 
 	}
 }

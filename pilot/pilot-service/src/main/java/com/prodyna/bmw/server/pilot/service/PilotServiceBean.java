@@ -52,8 +52,25 @@ public class PilotServiceBean implements PilotService {
 	 * @see com.prodyna.bmw.server.pilot.PilotService#getPilot(java.lang.String)
 	 */
 	@Override
-	public Pilot getPilot(String uuid) {
+	public Pilot getPilotById(String uuid) {
 		return em.find(Pilot.class, uuid);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.bmw.server.pilot.PilotService#getPilotByUsername(java.lang
+	 * .String)
+	 */
+	@Override
+	public Pilot getPilotByUsername(String username) {
+
+		return em
+				.createNamedQuery(Pilot.QUERY_FIND_PILOT_BY_USERNAME,
+						Pilot.class)
+				.setParameter(Pilot.QUERY_PARM_USERNAME, username)
+				.getResultList().get(0);
 	}
 
 	/*

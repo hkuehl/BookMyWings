@@ -14,7 +14,7 @@ angular
   ])
   .config(function ($routeProvider, $httpProvider) {
       //register http-interceptor
-      $httpProvider.responseInterceptors.push('Auth');
+//      $httpProvider.responseInterceptors.push('LoginRedirectInterceptor');
       
 	  $routeProvider
       .when('/', {

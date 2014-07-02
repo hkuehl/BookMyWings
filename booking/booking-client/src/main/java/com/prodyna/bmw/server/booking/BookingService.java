@@ -27,20 +27,21 @@ import com.prodyna.bmw.server.aircraft.Aircraft;
 @Produces("application/json")
 @Consumes("application/json")
 @PermitAll
-public interface BookingService {
+public interface BookingService extends BookingStateService {
 
 	@POST
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
+	@Path("/booking")
 	Booking addBooking(Booking booking);
 
 	@DELETE
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
 	@Path("{bookingId}")
 	void deleteBooking(@PathParam("bookingId") String bookingId);
 
 	@Path("/aircrafts/pilot")
 	@GET
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
 	@PathParam("{pilotId}")
 	List<Aircraft> findAircraftsForPilot(@PathParam("{pilotId}") String pilotId);
 
@@ -53,7 +54,7 @@ public interface BookingService {
 	Booking readBookingForId(@PathParam("bookingId") String bookingId);
 
 	@PUT
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
 	void updateBooking(Booking booking);
 
 }

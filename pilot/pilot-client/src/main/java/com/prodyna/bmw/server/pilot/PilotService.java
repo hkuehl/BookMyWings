@@ -24,28 +24,34 @@ import javax.ws.rs.QueryParam;
 @Path("/pilots")
 @Produces("application/json")
 @Consumes("application/json")
-@PermitAll
 public interface PilotService {
 
 	@POST
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
 	Pilot addPilot(Pilot pilot);
 
 	@DELETE
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
 	@Path("{pilotId}")
 	void deletePilot(@PathParam("pilotId") String uuid);
 
 	@GET
-	@Path("{pilotId}")
-	Pilot getPilot(@PathParam("pilotId") String uuid);
+	@PermitAll
+	@Path("/pilot/{pilotId}")
+	Pilot getPilotById(@PathParam("pilotId") String uuid);
 
 	@GET
+	@PermitAll
+	@Path("{username}")
+	Pilot getPilotByUsername(@PathParam("username") String uuid);
+
+	@GET
+	@PermitAll
 	List<Pilot> readAllPilots(@QueryParam("start") @Min(0) Integer start,
 			@QueryParam("pageSize") @Min(1) @Max(1000) Integer pageSize);
 
 	@PUT
-	@RolesAllowed("Manager")
+	@RolesAllowed("admin")
 	void updatePilot(Pilot pilot);
 
 }

@@ -89,7 +89,8 @@
 		<module>book-my-wings-rest-enabler</module>
 		<module>pilot</module>
 		<module>booking</module>
-		
+		<module>bmw-license-management</module>
+		<module>bmw-aircraft-type</module>
 	</modules>
 	<profiles>
 		<profile>

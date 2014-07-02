@@ -1,5 +1,33 @@
-<div ng-controller="LoginCtrl">
-<input ng-model="user.name" >Username</input>
-<input ng-model="user.pass" >Password</input>
-<p><a class="btn btn-lg btn-success" ng-click="login(user)" >Login<span class="glyphicon glyphicon-ok"></span></a></p>
+<div>
+	<form ng-controller="LoginCtrl" class="form-horizontal" role="form">
+		<div ng-show="error" class="alert alert-danger" role="alert">{{error}}</div>
+		<div class="form-group form-group-lg">
+			<label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+			<div class="col-sm-10">
+				<input ng-model="user.name" class="form-control" id="inputEmail3"
+					placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group form-group-lg">
+			<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+				<input ng-model="user.pass" type="password" class="form-control"
+					id="inputPassword3" placeholder="Password">
+			</div>
+		</div>
+		<div class="form-group form-group-lg">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label> <input type="checkbox"> Remember me
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-lg">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button ng-click="login(user)" href="#" type="submit"
+					class="btn btn-default">Sign in</button>
+			</div>
+		</div>
+	</form>
 </div>

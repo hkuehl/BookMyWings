@@ -42,7 +42,8 @@ import com.prodyna.bmw.server.pilot.Pilot;
 				+ " and b.startDate = :"
 				+ Booking.QUERY_PARAMETER_START
 				+ " and b.endDate = :"
-				+ Booking.QUERY_PARAMETER_END) })
+				+ Booking.QUERY_PARAMETER_END),
+		@NamedQuery(name = Booking.QUERY_GET_ALL_BOOKINGS_PAGINATED, query = "select b from Booking b order by b.startDate") })
 public class Booking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -58,6 +59,8 @@ public class Booking implements Serializable {
 	public static final String QUERY_PARAMETER_AIRCRAFT = "aircraft";
 	public static final String QUERY_PARAMETER_START = "start";
 	public static final String QUERY_PARAMETER_END = "end";
+
+	public static final String QUERY_GET_ALL_BOOKINGS_PAGINATED = "Booking.findAllBookingsPaginated";
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -80,6 +83,8 @@ public class Booking implements Serializable {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
+
+	private BookingState bookingState = BookingState.INITIAL;
 
 	private boolean dateEquals(Date thisDate, Date otherDate) {
 		Calendar thisCalendar = Calendar.getInstance();
@@ -156,6 +161,10 @@ public class Booking implements Serializable {
 		return bookingId;
 	}
 
+	public BookingState getBookingState() {
+		return bookingState;
+	}
+
 	public Date getEnd() {
 		return endDate;
 	}
@@ -191,6 +200,10 @@ public class Booking implements Serializable {
 		this.bookingId = bookingId;
 	}
 
+	public void setBookingState(BookingState bookingState) {
+		this.bookingState = bookingState;
+	}
+
 	public void setEnd(Date end) {
 		this.endDate = end;
 	}
@@ -207,7 +220,8 @@ public class Booking implements Serializable {
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", aircraft=" + aircraft
 				+ ", pilot=" + pilot + ", startDate=" + startDate
-				+ ", endDate=" + endDate + "]";
+				+ ", endDate=" + endDate + ", bookingState=" + bookingState
+				+ "]";
 	}
 
 }

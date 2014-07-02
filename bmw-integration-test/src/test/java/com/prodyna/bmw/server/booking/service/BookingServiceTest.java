@@ -2,6 +2,7 @@ package com.prodyna.bmw.server.booking.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
 
@@ -17,6 +18,7 @@ import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.aircraft.AircraftService;
 import com.prodyna.bmw.server.booking.Booking;
 import com.prodyna.bmw.server.booking.BookingService;
+import com.prodyna.bmw.server.booking.BookingState;
 import com.prodyna.bmw.server.pilot.Pilot;
 import com.prodyna.bmw.server.pilot.PilotService;
 
@@ -43,16 +45,20 @@ public class BookingServiceTest {
 	@Before
 	public void setUp() {
 		aircraft = new Aircraft();
-		aircraft.setRegistration("D-EFGH");
+		aircraft.setRegistration("D-EFGH"
+				+ ThreadLocalRandom.current().nextInt());
 		aircraftService.addAircraft(aircraft);
 
 		aircraft2 = new Aircraft();
-		aircraft2.setRegistration("X-XXXXX");
+		aircraft2.setRegistration("X-XXXXX"
+				+ ThreadLocalRandom.current().nextInt());
 		aircraftService.addAircraft(aircraft2);
 
 		pilot = new Pilot();
 		pilot.setFirstName("Henry");
 		pilot.setLastName("Keeeewwwl");
+		pilot.setUserName("HenKue" + ThreadLocalRandom.current().nextInt());
+		pilot.setPassword("passwd");
 		pilotService.addPilot(pilot);
 
 		booking = new Booking();
@@ -65,6 +71,13 @@ public class BookingServiceTest {
 
 	@After
 	public void tearDown() {
+		try {
+			bookingService.deleteBooking(booking.getBookingId());
+			aircraftService.deleteAircraft(aircraft.getId());
+			pilotService.deletePilot(pilot.getId());
+		} catch (Exception e) {
+			// ok
+		}
 	}
 
 	@Test
@@ -104,5 +117,20 @@ public class BookingServiceTest {
 				.findAircraftsForPilot(pilot.getId());
 		Assert.assertTrue(aircraftsForPilot.size() == 1);
 		Assert.assertTrue(aircraftsForPilot.get(0).equals(aircraft));
+	}
+
+	@Test
+	@InSequence(4)
+	public void testStateTransitions() {
+		Assert.assertEquals(BookingState.RESERVED,
+				bookingService.reserve(booking.getBookingId())
+						.getBookingState());
+		Assert.assertEquals(BookingState.LENT,
+				bookingService.setState(booking.getBookingId(), "LEnt")
+						.getBookingState());
+
+		Assert.assertEquals(BookingState.FINISHED,
+				bookingService.bringBack(booking.getBookingId())
+						.getBookingState());
 	}
 }

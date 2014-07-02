@@ -8,31 +8,41 @@
  * Controller of the clientTestApp
  */
 angular.module('clientTestApp')
-  .controller('BookingcalendarCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('BookingcalendarCtrl', function ($scope, $http, AuthService) {
 
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
     
-    $scope.changeTo = 'German';
     $scope.agendaDay = 'Day';
     $scope.agendaWeek = 'Week';
     $scope.agendaMonth = 'Month';
+    
+	$scope.$watch(AuthService.isLoggedIn, function(isLoggedIn) {
+		$scope.isLoggedIn = isLoggedIn;
+		$scope.user = AuthService.currentUser();
+	});
+    
     /* event source that contains custom events on the scope */
-    $scope.events = [
-      {title: 'All Day Event',start: new Date(y, m, 1)},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-    ];
+    $scope.events = [];
+    $http
+    .get(
+    		'http://localhost:8080/book-my-wings/rest/bookings?start=0&pageSize=100')
+    		.success(function(data) {
+    			$.each(data, function (index, aBooking) {
+    				var singleEvent = {
+    						id : aBooking.bookingId,
+    						title : aBooking.aircraft.registration + ' ' + aBooking.pilot.firstName,
+    						start : new Date(aBooking.start),
+    						end : new Date(aBooking.end),
+    						allDay : false
+    				}
+    				$scope.events.push(singleEvent);
+    			});
+    		}).error(function(data, status) {
+    			alert('Error:' + data + status);
+    		});
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, callback) {
       callback($scope.events);
@@ -40,7 +50,8 @@ angular.module('clientTestApp')
 
     /* alert on eventClick */
     $scope.alertOnEventClick = function( event, allDay, jsEvent, view ){
-        $scope.alertMessage = (event.title + ' was clicked ');
+        $scope.startTime = event.start;
+        $scope.endTime = event.end;
     };
     /* alert on Drop */
      $scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
@@ -71,7 +82,31 @@ angular.module('clientTestApp')
     };
     /* add custom event*/
     $scope.addEvent = function() {
-      alert('About to add booking: ' +   'start: ' +  $scope.currentDate + 'startTIme ' + $scope.startTime);
+    	
+    	var startDate = new Date();
+    	startDate.setTime($scope.currentDate.getTime()); //to set dd/mm//yy
+    	startDate.setHours($scope.startTime.getHours(), $scope.startTime.getMinutes(), 0, 0);
+
+    	var endDate = new Date();
+    	endDate.setTime($scope.currentDate.getTime()); //to set dd/mm//yy
+    	endDate.setHours($scope.endTime.getHours(), $scope.endTime.getMinutes(), 0, 0);
+    	
+    	var booking = {
+    			aircraft : $scope.aircraft,
+    			pilot : AuthService.currentUser(),    			
+    			start : startDate,
+    			end : endDate
+    	};
+
+    	$http
+		.post(
+				'http://localhost:8080/book-my-wings/rest/bookings/booking', booking)
+		.success(function(data) {
+			alert('Success');
+		}).error(function(data, status) {
+			alert('Error:' + data + status);
+		});
+      
     };
     /* remove event */
     $scope.remove = function(index) {
@@ -106,7 +141,6 @@ angular.module('clientTestApp')
     };
     $scope.uiConfig.calendar.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $scope.uiConfig.calendar.dayNamesShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    $scope.changeTo = 'German';
     $scope.agendaDay = 'Day';
     $scope.agendaWeek = 'Week';
     $scope.agendaMonth = 'Month';
@@ -114,20 +148,35 @@ angular.module('clientTestApp')
     /* event sources array*/
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF]; 
 
-  })
+    // Timepicker-Config
+    $scope.startTime = new Date();
+    $scope.startTime.setHours('8', '00', '0', '0');
+    $scope.endTime = new Date();
+    $scope.endTime.setHours('18', '00', '0', '0');
   
-  .controller( 'TimpickerController', function ($scope) {
-	  $scope.startTime = new Date();
-	  $scope.startTime.setHours('8', '00', '0', '0');
-	  $scope.endTime = new Date();
-	  $scope.endTime.setHours('18', '00', '0', '0');
-	
-	  $scope.hstep = 1;
-	  $scope.mstep = 30;
-	  $scope.ismeridian = false;
-	
-	
-	  $scope.clear = function() {
-	    $scope.startTime = null;
-	  };
+    $scope.hstep = 1;
+    $scope.mstep = 30;
+    $scope.ismeridian = false;
+    
+	$scope.title = 'Please choose aircraft';
+
+	$scope.status = {
+		isopen : false
+	};
+
+	$scope.toggled = function(aircraft) {
+		$scope.title = aircraft.registration;
+		$scope.aircraft = aircraft;
+		$scope.status.isopen = !$scope.status.isopen;
+	};
+
+	$http
+			.get(
+					'http://localhost:8080/book-my-wings/rest/aircrafts?start=0&pageSize=100')
+			.success(function(data) {
+				$scope.aircrafts = data;
+			}).error(function(data, status) {
+
+			});	
+
   });

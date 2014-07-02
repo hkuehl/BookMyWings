@@ -10,7 +10,6 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-3-timepicker/css/bootstrap-timepicker.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -24,10 +23,16 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
+      <div class="header" ng-controller="HeaderCtrl">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/bookingCalendar">Booking Calendar</a></li>
+          <li ng-class="{active:active('/')}"><a ng-href="#">Home</a></li>
+          <li ng-class="{active:active('/bookingCalendar')}"><a ng-href="#/bookingCalendar">Booking Calendar</a></li>
+          <li ng-model="user" ng-show="user" ><a ng-href="#">
+          	<strong>
+          	{{user.firstName}} {{user.lastName}}
+          	</strong>
+          	</a></li>
+          <li ng-model="user" ng-hide="user" ><a ng-href="#/login">Login</a></li>
         </ul>
         <h3 class="text-muted">Book-My-Wings</h3>
       </div>
@@ -67,8 +72,6 @@
     <script src="bower_components/fullcalendar/fullcalendar.js"></script>
     <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/autotype/index.js"></script>
-    <script src="bower_components/bootstrap-3-timepicker/js/bootstrap-timepicker.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -76,14 +79,13 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/calendarcontroller.js"></script>
         <script src="scripts/controllers/bookingcalendar.js"></script>
-        <script src="scripts/controllers/dropdowncontroller.js"></script>
         <script src="scripts/services/base64.js"></script>
         <script src="scripts/controllers/authentication.js"></script>
-        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/auth_services.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/directives/a.js"></script>
+        <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>

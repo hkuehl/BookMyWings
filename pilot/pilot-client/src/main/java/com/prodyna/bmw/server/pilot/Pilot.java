@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -15,11 +16,16 @@ import org.hibernate.annotations.GenericGenerator;
  * 
  */
 @Entity
-@NamedQuery(name = Pilot.QUERY_GET_ALL_PILOTS_PAGINATED, query = "select p from Pilot p order by p.lastName")
+@NamedQueries({
+		@NamedQuery(name = Pilot.QUERY_GET_ALL_PILOTS_PAGINATED, query = "select p from Pilot p order by p.lastName"),
+		@NamedQuery(name = Pilot.QUERY_FIND_PILOT_BY_USERNAME, query = "select p from Pilot p where p.userName = :"
+				+ Pilot.QUERY_PARM_USERNAME) })
 @Table(name = "PIL_PILOT")
 public class Pilot {
 
 	public static final String QUERY_GET_ALL_PILOTS_PAGINATED = "Pilot.findAllPaginated";
+	public static final String QUERY_FIND_PILOT_BY_USERNAME = "Pilot.findByUsername";
+	public static final String QUERY_PARM_USERNAME = "username";
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -91,6 +97,14 @@ public class Pilot {
 		return lastName;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,6 +127,14 @@ public class Pilot {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	@Override
