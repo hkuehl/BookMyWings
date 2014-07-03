@@ -37,7 +37,7 @@
 							<skip>false</skip>
 							<includes>
 								<include>
-									com/prodyna/bmw/server/*
+									com/prodyna/bmw/server/**
 								</include>
 							</includes>
 						</configuration>
