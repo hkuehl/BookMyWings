@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +27,17 @@ import com.prodyna.bmw.server.pilot.Pilot;
  */
 @Entity
 @Table(name = "LIC_LICENSE")
+@NamedQuery(name = PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT, query = "select l from PilotLicense l where l.pilot.id = :"
+		+ PilotLicense.QUERY_PARM_PILOT
+		+ " and l.aircraftType.id =:"
+		+ PilotLicense.QUERY_PARM_AIRCRAFTTYPE)
 public class PilotLicense {
+
+	public static final String QUERY_FIND_LICENSE_FOR_PILOT = "PilotLicense.findLicensesForPilotAndAircraftType";
+
+	public static final String QUERY_PARM_PILOT = "pilotParm";
+
+	public static final String QUERY_PARM_AIRCRAFTTYPE = "aircraftTypeParm";
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -171,6 +182,13 @@ public class PilotLicense {
 
 	public void setValidThru(Date validThru) {
 		this.validThru = validThru;
+	}
+
+	@Override
+	public String toString() {
+		return "PilotLicense [id=" + id + ", pilot=" + pilot
+				+ ", aircraftType=" + aircraftType + ", validFrom=" + validFrom
+				+ ", validThru=" + validThru + "]";
 	}
 
 }

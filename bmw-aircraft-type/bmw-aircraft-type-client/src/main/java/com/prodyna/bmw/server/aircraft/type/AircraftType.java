@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
  * 
  */
 @Entity
-@Table(name = "air_aicraft_type")
+@Table(name = "AIR_AIRCRAFT_TYPE")
 public class AircraftType {
 
 	@Id
@@ -80,6 +80,11 @@ public class AircraftType {
 
 	public void setTypeString(String typeString) {
 		this.typeString = typeString;
+	}
+
+	@Override
+	public String toString() {
+		return "AircraftType [id=" + id + ", typeString=" + typeString + "]";
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Local;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.ws.rs.Consumes;
@@ -16,8 +17,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-
-import com.prodyna.bmw.server.aircraft.Aircraft;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
@@ -32,18 +31,12 @@ public interface BookingService extends BookingStateService {
 	@POST
 	@RolesAllowed("admin")
 	@Path("/booking")
-	Booking addBooking(Booking booking);
+	Booking addBooking(@Valid Booking booking);
 
 	@DELETE
 	@RolesAllowed("admin")
 	@Path("{bookingId}")
 	void deleteBooking(@PathParam("bookingId") String bookingId);
-
-	@Path("/aircrafts/pilot")
-	@GET
-	@RolesAllowed("admin")
-	@PathParam("{pilotId}")
-	List<Aircraft> findAircraftsForPilot(@PathParam("{pilotId}") String pilotId);
 
 	@GET
 	List<Booking> readAllBookings(@QueryParam("start") @Min(0) Integer start,
@@ -55,6 +48,6 @@ public interface BookingService extends BookingStateService {
 
 	@PUT
 	@RolesAllowed("admin")
-	void updateBooking(Booking booking);
+	void updateBooking(@Valid Booking booking);
 
 }

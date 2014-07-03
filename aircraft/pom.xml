@@ -15,4 +15,11 @@
 		<module>aircraft-client</module>
 		<module>aircraft-service</module>
 	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>com.prodyna.bmw.server</groupId>
+			<artifactId>bmw-aircraft-type-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>

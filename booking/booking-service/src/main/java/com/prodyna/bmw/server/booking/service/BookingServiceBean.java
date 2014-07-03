@@ -1,18 +1,18 @@
 package com.prodyna.bmw.server.booking.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.booking.Booking;
 import com.prodyna.bmw.server.booking.BookingService;
 import com.prodyna.bmw.server.booking.BookingState;
 import com.prodyna.bmw.server.common.monitoring.Monitored;
-import com.prodyna.bmw.server.pilot.Pilot;
-import com.prodyna.bmw.server.pilot.PilotService;
+import com.prodyna.bmw.server.license.PilotLicense;
+import com.prodyna.bmw.server.license.PilotLicenseService;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
@@ -26,7 +26,7 @@ public class BookingServiceBean implements BookingService {
 	private EntityManager em;
 
 	@Inject
-	private PilotService pilotService;
+	private PilotLicenseService pilotLicenseService;
 
 	/*
 	 * (non-Javadoc)
@@ -37,6 +37,23 @@ public class BookingServiceBean implements BookingService {
 	 */
 	@Override
 	public Booking addBooking(Booking booking) {
+
+		List<PilotLicense> licenses = pilotLicenseService
+				.findLicenseForPilotAndAircraftType(booking.getPilot().getId(),
+						booking.getAircraft().getAircraftType().getId());
+
+		List<PilotLicense> validLicenses = new ArrayList<PilotLicense>();
+		for (PilotLicense license : licenses) {
+			if (license.getValidThru().after(booking.getEnd())) {
+				validLicenses.add(license);
+			}
+		}
+
+		if (validLicenses.isEmpty()) {
+			throw new RuntimeException("No valid License found for Booking "
+					+ booking.toString());
+		}
+
 		em.persist(booking);
 		return booking;
 	}
@@ -90,27 +107,6 @@ public class BookingServiceBean implements BookingService {
 
 		Booking booking = readBookingForId(uuid);
 		em.remove(booking);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.prodyna.bmw.server.booking.BookingService#findAircraftsForPilot(java
-	 * .lang.String)
-	 */
-	@Override
-	public List<Aircraft> findAircraftsForPilot(String pilotId) {
-
-		Pilot pilot = pilotService.getPilotById(pilotId);
-
-		List<Aircraft> resultList = em
-				.createNamedQuery(Booking.QUERY_FIND_AIRCRAFTS_FOR_PILOT,
-						Aircraft.class)
-				.setParameter(Booking.QUERY_PARAMETER_PILOT, pilot)
-				.getResultList();
-
-		return resultList;
 	}
 
 	/*

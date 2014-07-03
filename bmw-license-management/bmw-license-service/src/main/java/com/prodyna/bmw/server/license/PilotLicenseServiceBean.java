@@ -1,12 +1,12 @@
 package com.prodyna.bmw.server.license;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.prodyna.bmw.server.common.monitoring.Monitored;
-import com.prodyna.bmw.server.license.PilotLicense;
-import com.prodyna.bmw.server.license.PilotLicenseService;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
@@ -43,6 +43,24 @@ public class PilotLicenseServiceBean implements PilotLicenseService {
 	public void deleteLicense(String id) {
 		PilotLicense license = em.find(PilotLicense.class, id);
 		em.remove(license);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prodyna.bmw.server.license.PilotLicenseService#
+	 * findLicenseForPilotAndAircraftType (java.lang.String)
+	 */
+	@Override
+	public List<PilotLicense> findLicenseForPilotAndAircraftType(
+			String pilotId, String aircraftTypeId) {
+		return em
+				.createNamedQuery(PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT,
+						PilotLicense.class)
+				.setParameter(PilotLicense.QUERY_PARM_PILOT, pilotId)
+				.setParameter(PilotLicense.QUERY_PARM_AIRCRAFTTYPE,
+						aircraftTypeId).getResultList();
+
 	}
 
 	/*

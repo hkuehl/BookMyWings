@@ -32,8 +32,6 @@ import com.prodyna.bmw.server.pilot.Pilot;
 @Table(name = "BOK_BOOKING", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"aircraft_id", "pilot_id", "startDate", "endDate" }))
 @NamedQueries({
-		@NamedQuery(name = Booking.QUERY_FIND_AIRCRAFTS_FOR_PILOT, query = "select b.aircraft from Booking b where b.pilot = :"
-				+ Booking.QUERY_PARAMETER_PILOT),
 		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_BY_ID, query = "select b from Booking b where b.bookingId = :"
 				+ Booking.QUERY_PARAMETER_BOOKINGID),
 		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_BY_CORE_ATTRIBUTES, query = "select b from Booking b where b.aircraft = :"
@@ -48,8 +46,6 @@ import com.prodyna.bmw.server.pilot.Pilot;
 public class Booking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	public static final String QUERY_FIND_AIRCRAFTS_FOR_PILOT = "Booking.findAircraftsForPilot";
 
 	public static final String QUERY_FIND_BOOKING_BY_ID = "Booking.findBookingById";
 

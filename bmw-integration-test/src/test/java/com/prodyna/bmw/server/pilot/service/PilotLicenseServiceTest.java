@@ -1,11 +1,14 @@
 package com.prodyna.bmw.server.pilot.service;
 
 import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
 
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -32,18 +35,29 @@ public class PilotLicenseServiceTest {
 	@Inject
 	private AircraftTypeService aircraftTypeService;
 
-	@Test
-	public void testCRUDPilotLicenseService() {
-		AircraftType aircraftType = new AircraftType();
-		aircraftType.setTypeString("Airbus");
+	private Pilot pilot = null;
+
+	private AircraftType aircraftType = null;
+
+	@Before
+	public void before() {
+		aircraftType = new AircraftType();
+		aircraftType.setTypeString("Airbus"
+				+ ThreadLocalRandom.current().nextInt());
 		aircraftTypeService.addAircraftType(aircraftType);
 
-		Pilot pilot = new Pilot();
+		pilot = new Pilot();
 		pilot.setFirstName("Henryyy");
 		pilot.setLastName("Kewwwwwwwwwwl");
-		pilot.setUserName("usssssssser");
+		pilot.setUserName("usssssssser" + ThreadLocalRandom.current().nextInt());
 		pilot.setPassword("secret");
 		pilotService.addPilot(pilot);
+
+	}
+
+	@Test
+	@InSequence(1)
+	public void testCRUDPilotLicenseService() {
 
 		PilotLicense pilotLicense = new PilotLicense();
 		pilotLicense.setAircraftType(aircraftType);
@@ -68,5 +82,22 @@ public class PilotLicenseServiceTest {
 		pilotLicenseService.deleteLicense(pilotLicense.getId());
 		Assert.assertNull(pilotLicenseService.getLicense(pilotLicense.getId()));
 
+	}
+
+	@Test
+	@InSequence(2)
+	public void testFindLicenseForPilotAndAircraftType() {
+		PilotLicense pilotLicense = new PilotLicense();
+		pilotLicense.setAircraftType(aircraftType);
+		pilotLicense.setPilot(pilot);
+		pilotLicense.setValidFrom(new Date());
+		pilotLicense.setValidThru(new Date());
+
+		pilotLicenseService.addLicense(pilotLicense);
+
+		Assert.assertEquals(
+				pilotLicense,
+				pilotLicenseService.findLicenseForPilotAndAircraftType(
+						pilot.getId(), aircraftType.getId()).get(0));
 	}
 }

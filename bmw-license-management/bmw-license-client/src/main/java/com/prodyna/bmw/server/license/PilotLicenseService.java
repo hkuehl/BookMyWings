@@ -1,5 +1,7 @@
 package com.prodyna.bmw.server.license;
 
+import java.util.List;
+
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Local;
 import javax.ws.rs.Consumes;
@@ -30,6 +32,12 @@ public interface PilotLicenseService {
 	@RolesAllowed("admin")
 	@Path("/license/{id}")
 	void deleteLicense(@PathParam("id") String id);
+
+	@GET
+	@Path("/license/pilot/{pilotId}/aircraftType/{aircraftTypeId}")
+	List<PilotLicense> findLicenseForPilotAndAircraftType(
+			@PathParam("pilotId") String pilotId,
+			@PathParam("aircraftTypeId") String aircraftTypeId);
 
 	@GET
 	@Path("/license/{id}")

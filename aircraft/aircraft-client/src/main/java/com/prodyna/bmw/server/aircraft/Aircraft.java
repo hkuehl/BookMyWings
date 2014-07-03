@@ -4,12 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.prodyna.bmw.server.aircraft.type.AircraftType;
 
 /**
  * 
@@ -36,6 +39,10 @@ public class Aircraft {
 	@NotNull
 	private String registration;
 
+	@NotNull
+	@ManyToOne
+	private AircraftType aircraftType;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -48,6 +55,13 @@ public class Aircraft {
 			return false;
 		}
 		Aircraft other = (Aircraft) obj;
+		if (aircraftType == null) {
+			if (other.aircraftType != null) {
+				return false;
+			}
+		} else if (!aircraftType.equals(other.aircraftType)) {
+			return false;
+		}
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -65,6 +79,10 @@ public class Aircraft {
 		return true;
 	}
 
+	public AircraftType getAircraftType() {
+		return aircraftType;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -77,10 +95,16 @@ public class Aircraft {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((aircraftType == null) ? 0 : aircraftType.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((registration == null) ? 0 : registration.hashCode());
 		return result;
+	}
+
+	public void setAircraftType(AircraftType aircraftType) {
+		this.aircraftType = aircraftType;
 	}
 
 	public void setId(String id) {

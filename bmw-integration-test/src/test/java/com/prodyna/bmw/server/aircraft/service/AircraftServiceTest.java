@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 
 import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.aircraft.AircraftService;
+import com.prodyna.bmw.server.aircraft.type.AircraftType;
+import com.prodyna.bmw.server.aircraft.type.AircraftTypeService;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
@@ -19,10 +21,17 @@ public class AircraftServiceTest {
 	@Inject
 	private AircraftService aircraftService;
 
+	@Inject
+	private AircraftTypeService aircraftTypeService;
+
 	@Test
 	public void testCRUDAircraft() {
+		AircraftType aircraftType = new AircraftType();
+		aircraftType.setTypeString("Boeasdsfsdf");
+		aircraftType = aircraftTypeService.addAircraftType(aircraftType);
 		Aircraft aircraft = new Aircraft();
 		aircraft.setRegistration("D-EKF22");
+		aircraft.setAircraftType(aircraftType);
 		aircraft = aircraftService.addAircraft(aircraft);
 
 		// does the DB generate a uuid??

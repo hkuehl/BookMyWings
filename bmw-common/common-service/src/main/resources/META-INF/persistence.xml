@@ -9,6 +9,8 @@
 		<class>com.prodyna.bmw.server.booking.Booking</class>
 		<class>com.prodyna.bmw.server.pilot.Pilot</class>
 		<class>com.prodyna.bmw.server.pilot.PilotRole</class>
+		<class>com.prodyna.bmw.server.aircraft.type.AircraftType</class>
+		<class>com.prodyna.bmw.server.license.PilotLicense</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

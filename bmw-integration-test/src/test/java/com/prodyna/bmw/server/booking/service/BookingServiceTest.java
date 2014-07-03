@@ -1,7 +1,7 @@
 package com.prodyna.bmw.server.booking.service;
 
+import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
@@ -16,9 +16,13 @@ import org.junit.runner.RunWith;
 
 import com.prodyna.bmw.server.aircraft.Aircraft;
 import com.prodyna.bmw.server.aircraft.AircraftService;
+import com.prodyna.bmw.server.aircraft.type.AircraftType;
+import com.prodyna.bmw.server.aircraft.type.AircraftTypeService;
 import com.prodyna.bmw.server.booking.Booking;
 import com.prodyna.bmw.server.booking.BookingService;
 import com.prodyna.bmw.server.booking.BookingState;
+import com.prodyna.bmw.server.license.PilotLicense;
+import com.prodyna.bmw.server.license.PilotLicenseService;
 import com.prodyna.bmw.server.pilot.Pilot;
 import com.prodyna.bmw.server.pilot.PilotService;
 
@@ -36,36 +40,63 @@ public class BookingServiceTest {
 	private AircraftService aircraftService;
 
 	@Inject
+	private AircraftTypeService aircraftTypeService;
+
+	@Inject
 	private PilotService pilotService;
+
+	@Inject
+	private PilotLicenseService pilotLicenseService;
 
 	private Aircraft aircraft, aircraft2;
 	private Pilot pilot;
 	private Booking booking;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws InterruptedException {
+		AircraftType type = new AircraftType();
+		type.setTypeString("Cesnaaaa" + ThreadLocalRandom.current().nextInt());
+		type = aircraftTypeService.addAircraftType(type);
+
 		aircraft = new Aircraft();
+		aircraft.setAircraftType(type);
 		aircraft.setRegistration("D-EFGH"
 				+ ThreadLocalRandom.current().nextInt());
-		aircraftService.addAircraft(aircraft);
+		aircraft = aircraftService.addAircraft(aircraft);
 
 		aircraft2 = new Aircraft();
+		aircraft2.setAircraftType(type);
 		aircraft2.setRegistration("X-XXXXX"
 				+ ThreadLocalRandom.current().nextInt());
-		aircraftService.addAircraft(aircraft2);
+		aircraft2 = aircraftService.addAircraft(aircraft2);
 
 		pilot = new Pilot();
 		pilot.setFirstName("Henry");
 		pilot.setLastName("Keeeewwwl");
 		pilot.setUserName("HenKue" + ThreadLocalRandom.current().nextInt());
 		pilot.setPassword("passwd");
-		pilotService.addPilot(pilot);
+		pilot = pilotService.addPilot(pilot);
+
+		PilotLicense license = new PilotLicense();
+		license.setAircraftType(type);
+		license.setPilot(pilot);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, 2014);
+		calendar.set(Calendar.MONTH, Calendar.JANUARY);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+		license.setValidFrom(calendar.getTime());
+		calendar.set(Calendar.YEAR, 2020);
+		license.setValidThru(calendar.getTime());
+		pilotLicenseService.addLicense(license);
 
 		booking = new Booking();
 		booking.setStart(new Date());
 		booking.setEnd(booking.getStart());
 		booking.setAircraft(aircraft);
 		booking.setPilot(pilot);
+
 		bookingService.addBooking(booking);
 	}
 
@@ -111,16 +142,6 @@ public class BookingServiceTest {
 
 	@Test
 	@InSequence(3)
-	public void testFindAircraftsForPilot() throws InterruptedException {
-
-		List<Aircraft> aircraftsForPilot = bookingService
-				.findAircraftsForPilot(pilot.getId());
-		Assert.assertTrue(aircraftsForPilot.size() == 1);
-		Assert.assertTrue(aircraftsForPilot.get(0).equals(aircraft));
-	}
-
-	@Test
-	@InSequence(4)
 	public void testStateTransitions() {
 		Assert.assertEquals(BookingState.RESERVED,
 				bookingService.reserve(booking.getBookingId())
