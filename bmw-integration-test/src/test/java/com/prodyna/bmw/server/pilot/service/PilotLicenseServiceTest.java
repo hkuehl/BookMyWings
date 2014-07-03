@@ -1,7 +1,6 @@
 package com.prodyna.bmw.server.pilot.service;
 
 import java.util.Date;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
 
@@ -13,10 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.prodyna.bmw.server.aircraft.type.AircraftType;
-import com.prodyna.bmw.server.aircraft.type.AircraftTypeService;
 import com.prodyna.bmw.server.license.PilotLicense;
 import com.prodyna.bmw.server.license.PilotLicenseService;
-import com.prodyna.bmw.server.pilot.Pilot;
 import com.prodyna.bmw.server.pilot.PilotService;
 
 /**
@@ -32,27 +29,13 @@ public class PilotLicenseServiceTest {
 	@Inject
 	private PilotService pilotService;
 
-	@Inject
-	private AircraftTypeService aircraftTypeService;
-
-	private Pilot pilot = null;
-
 	private AircraftType aircraftType = null;
 
 	@Before
 	public void before() {
 		aircraftType = new AircraftType();
-		aircraftType.setTypeString("Airbus"
-				+ ThreadLocalRandom.current().nextInt());
-		aircraftTypeService.addAircraftType(aircraftType);
-
-		pilot = new Pilot();
-		pilot.setFirstName("Henryyy");
-		pilot.setLastName("Kewwwwwwwwwwl");
-		pilot.setUserName("usssssssser" + ThreadLocalRandom.current().nextInt());
-		pilot.setPassword("secret");
-		pilotService.addPilot(pilot);
-
+		aircraftType.setId(this.getClass().getName());
+		aircraftType.setTypeString(this.getClass().getSimpleName());
 	}
 
 	@Test
@@ -60,8 +43,10 @@ public class PilotLicenseServiceTest {
 	public void testCRUDPilotLicenseService() {
 
 		PilotLicense pilotLicense = new PilotLicense();
+
 		pilotLicense.setAircraftType(aircraftType);
-		pilotLicense.setPilot(pilot);
+		pilotLicense.setPilot(pilotService.getPilotById(this.getClass()
+				.getName()));
 		pilotLicense.setValidFrom(new Date());
 		pilotLicense.setValidThru(new Date());
 
@@ -89,7 +74,8 @@ public class PilotLicenseServiceTest {
 	public void testFindLicenseForPilotAndAircraftType() {
 		PilotLicense pilotLicense = new PilotLicense();
 		pilotLicense.setAircraftType(aircraftType);
-		pilotLicense.setPilot(pilot);
+		pilotLicense.setPilot(pilotService.getPilotById(this.getClass()
+				.getName()));
 		pilotLicense.setValidFrom(new Date());
 		pilotLicense.setValidThru(new Date());
 
@@ -98,6 +84,6 @@ public class PilotLicenseServiceTest {
 		Assert.assertEquals(
 				pilotLicense,
 				pilotLicenseService.findLicenseForPilotAndAircraftType(
-						pilot.getId(), aircraftType.getId()).get(0));
+						this.getClass().getName(), aircraftType.getId()).get(0));
 	}
 }

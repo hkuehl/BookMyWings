@@ -42,6 +42,12 @@ public interface AircraftService {
 	Aircraft getAircraft(@PathParam("aircraftId") String uuid);
 
 	@GET
+	@Path("/aircraft/type/{typeId}")
+	@RolesAllowed({ "admin", "user" })
+	List<Aircraft> getAircraftsForType(
+			@PathParam("typeId") String aircraftTypeId);
+
+	@GET
 	@RolesAllowed("admin")
 	List<Aircraft> readAllAircrafts(@QueryParam("start") @Min(0) Integer start,
 			@QueryParam("pageSize") @Min(1) @Max(1000) Integer pageSize);

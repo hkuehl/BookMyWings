@@ -26,7 +26,7 @@ public class PilotServiceTest {
 		Pilot pilot = new Pilot();
 		pilot.setFirstName("Alexander");
 		pilot.setLastName("Marcus");
-		pilot.setUserName("CoolUser");
+		pilot.setUserName(this.getClass().getName());
 		pilot.setPassword("passwd");
 
 		pilotService.addPilot(pilot);
@@ -44,8 +44,8 @@ public class PilotServiceTest {
 				.getFirstName());
 
 		// custom finder
-		Assert.assertEquals("CoolUser",
-				pilotService.getPilotByUsername("CoolUser").getUserName());
+		Assert.assertEquals(this.getClass().getName(), pilotService
+				.getPilotByUsername(this.getClass().getName()).getUserName());
 
 		// delete
 		pilotService.deletePilot(pilot.getId());

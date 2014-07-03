@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -20,11 +21,16 @@ import com.prodyna.bmw.server.aircraft.type.AircraftType;
  * 
  */
 @Entity
-@NamedQuery(name = Aircraft.QUERY_GET_ALL_AIRCRAFTS_PAGINATED, query = "select a from Aircraft a order by a.registration")
+@NamedQueries({
+		@NamedQuery(name = Aircraft.QUERY_GET_ALL_AIRCRAFTS_PAGINATED, query = "select a from Aircraft a order by a.registration"),
+		@NamedQuery(name = Aircraft.QUERY_GET_AIRCRAFT_BY_TYPE, query = "select a from Aircraft a where a.aircraftType.id = :"
+				+ Aircraft.QUERY_PARM_AIRCRAFT_TYPE) })
 @Table(name = "AIR_AIRCRAFT", uniqueConstraints = @UniqueConstraint(columnNames = { "registration" }))
 public class Aircraft {
 
 	public static final String QUERY_GET_ALL_AIRCRAFTS_PAGINATED = "Aircraft.findAllPaginated";
+	public static final String QUERY_GET_AIRCRAFT_BY_TYPE = "Aircraft.findAircraftByAircraftType";
+	public static final String QUERY_PARM_AIRCRAFT_TYPE = "type";
 
 	@Id
 	@GeneratedValue(generator = "uuid")

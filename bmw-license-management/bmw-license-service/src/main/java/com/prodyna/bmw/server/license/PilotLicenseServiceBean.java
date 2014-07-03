@@ -55,7 +55,8 @@ public class PilotLicenseServiceBean implements PilotLicenseService {
 	public List<PilotLicense> findLicenseForPilotAndAircraftType(
 			String pilotId, String aircraftTypeId) {
 		return em
-				.createNamedQuery(PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT,
+				.createNamedQuery(
+						PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT_AND_TYPE,
 						PilotLicense.class)
 				.setParameter(PilotLicense.QUERY_PARM_PILOT, pilotId)
 				.setParameter(PilotLicense.QUERY_PARM_AIRCRAFTTYPE,
@@ -73,6 +74,22 @@ public class PilotLicenseServiceBean implements PilotLicenseService {
 	@Override
 	public PilotLicense getLicense(String id) {
 		return em.find(PilotLicense.class, id);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.bmw.server.license.PilotLicenseService#readLicensesForPilot
+	 * (java.lang.String)
+	 */
+	@Override
+	public List<PilotLicense> readLicensesForPilot(String pilotId) {
+		return em
+				.createNamedQuery(PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT,
+						PilotLicense.class)
+				.setParameter(PilotLicense.QUERY_PARM_PILOT, pilotId)
+				.getResultList();
 	}
 
 	/*

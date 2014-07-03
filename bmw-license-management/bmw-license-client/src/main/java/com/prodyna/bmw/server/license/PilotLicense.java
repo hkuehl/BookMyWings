@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,13 +28,17 @@ import com.prodyna.bmw.server.pilot.Pilot;
  */
 @Entity
 @Table(name = "LIC_LICENSE")
-@NamedQuery(name = PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT, query = "select l from PilotLicense l where l.pilot.id = :"
-		+ PilotLicense.QUERY_PARM_PILOT
-		+ " and l.aircraftType.id =:"
-		+ PilotLicense.QUERY_PARM_AIRCRAFTTYPE)
+@NamedQueries({
+		@NamedQuery(name = PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT_AND_TYPE, query = "select l from PilotLicense l where l.pilot.id = :"
+				+ PilotLicense.QUERY_PARM_PILOT
+				+ " and l.aircraftType.id =:"
+				+ PilotLicense.QUERY_PARM_AIRCRAFTTYPE),
+		@NamedQuery(name = PilotLicense.QUERY_FIND_LICENSE_FOR_PILOT, query = "select l from PilotLicense l where l.pilot.id = :"
+				+ PilotLicense.QUERY_PARM_PILOT) })
 public class PilotLicense {
 
-	public static final String QUERY_FIND_LICENSE_FOR_PILOT = "PilotLicense.findLicensesForPilotAndAircraftType";
+	public static final String QUERY_FIND_LICENSE_FOR_PILOT_AND_TYPE = "PilotLicense.findLicensesForPilotAndAircraftType";
+	public static final String QUERY_FIND_LICENSE_FOR_PILOT = "PilotLicense.findLicensesForPilot";
 
 	public static final String QUERY_PARM_PILOT = "pilotParm";
 

@@ -23,18 +23,16 @@ public class AircraftTypeServiceTest {
 	@Test
 	public void testCRUDAircraftType() {
 		AircraftType aircraftType = new AircraftType();
-		aircraftType.setTypeString("Boeing");
+		aircraftType.setTypeString(this.getClass().getSimpleName());
 		AircraftType addAircraftType = aircraftTypeService
 				.addAircraftType(aircraftType);
 		Assert.assertNotNull(addAircraftType.getId());
 
-		addAircraftType.setTypeString("Cessna");
-		Assert.assertEquals("Cessna",
-				aircraftTypeService.updateAircraftType(addAircraftType)
-						.getTypeString());
-		Assert.assertEquals("Cessna",
-				aircraftTypeService.getAircraftType(addAircraftType.getId())
-						.getTypeString());
+		addAircraftType.setTypeString(this.getClass().getName());
+		Assert.assertEquals(this.getClass().getName(), aircraftTypeService
+				.updateAircraftType(addAircraftType).getTypeString());
+		Assert.assertEquals(this.getClass().getName(), aircraftTypeService
+				.getAircraftType(addAircraftType.getId()).getTypeString());
 
 		aircraftTypeService.deleteAircraftType(addAircraftType.getId());
 

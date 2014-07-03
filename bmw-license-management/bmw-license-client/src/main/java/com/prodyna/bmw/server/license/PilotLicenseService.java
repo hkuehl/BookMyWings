@@ -43,6 +43,11 @@ public interface PilotLicenseService {
 	@Path("/license/{id}")
 	PilotLicense getLicense(@PathParam("id") String id);
 
+	@GET
+	@RolesAllowed({ "user", "admin" })
+	@Path("/{pilotId}")
+	List<PilotLicense> readLicensesForPilot(@PathParam("pilotId") String pilotId);
+
 	@PUT
 	@Path("/license")
 	@RolesAllowed("admin")

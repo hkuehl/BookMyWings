@@ -63,6 +63,22 @@ public class AircraftServiceBean implements AircraftService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
+	 * com.prodyna.bmw.server.aircraft.AircraftService#getAircraftsForType(java
+	 * .lang.String)
+	 */
+	@Override
+	public List<Aircraft> getAircraftsForType(String aircraftTypeId) {
+		return entityManager
+				.createNamedQuery(Aircraft.QUERY_GET_AIRCRAFT_BY_TYPE,
+						Aircraft.class)
+				.setParameter(Aircraft.QUERY_PARM_AIRCRAFT_TYPE, aircraftTypeId)
+				.getResultList();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
 	 * com.prodyna.bmw.server.aircraft.AircraftService#readAllAircrafts(java
 	 * .lang.Long, java.lang.Long)
 	 */

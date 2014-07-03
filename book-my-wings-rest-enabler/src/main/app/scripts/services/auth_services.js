@@ -9,6 +9,9 @@ angular.module('clientTestApp').factory(
 		'AuthService',
 		function($http) {
 			var currentUser;
+			var dummy = {
+				id : 'dummy'
+			};
 
 			return {
 				login : function(username, password) {
@@ -25,7 +28,7 @@ angular.module('clientTestApp').factory(
 					return currentUser.id;
 				},
 				currentUser : function() {
-					return currentUser;
+					return currentUser ? currentUser : dummy;
 				}
 			};
 		})

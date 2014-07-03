@@ -38,7 +38,6 @@ public interface BookingService extends BookingStateService {
 	void deleteBooking(@PathParam("bookingId") String bookingId);
 
 	@GET
-	@RolesAllowed("admin")
 	List<Booking> readAllBookings(@QueryParam("start") @Min(0) Integer start,
 			@QueryParam("pageSize") @Min(1) @Max(1000) Integer pageSize);
 
@@ -48,7 +47,6 @@ public interface BookingService extends BookingStateService {
 	Booking readBookingForId(@PathParam("bookingId") String bookingId);
 
 	@GET
-	@RolesAllowed({ "user", "admin" })
 	@Path("/filter/month/{month}")
 	List<Booking> readBookingsForMonth(
 			@PathParam("month") @Min(1) @Max(12) Integer month);

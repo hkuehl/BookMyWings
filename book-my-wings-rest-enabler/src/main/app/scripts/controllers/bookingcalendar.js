@@ -8,7 +8,7 @@
  * Controller of the clientTestApp
  */
 angular.module('clientTestApp')
-  .controller('BookingcalendarCtrl', function ($scope, $http, AuthService) {
+  .controller('BookingcalendarCtrl', function ($scope, $http, AuthService, Booking) {
 
     var date = new Date();
     var d = date.getDate();
@@ -23,29 +23,29 @@ angular.module('clientTestApp')
 		$scope.isLoggedIn = isLoggedIn;
 		$scope.user = AuthService.currentUser();
 	});
-    
-    /* event source that contains custom events on the scope */
-    $scope.events = [];
-    $http
-    .get(
-    		'http://localhost:8080/book-my-wings/rest/bookings?start=0&pageSize=100')
-    		.success(function(data) {
-    			$.each(data, function (index, aBooking) {
-    				var singleEvent = {
-    						id : aBooking.bookingId,
-    						title : aBooking.aircraft.registration + ' ' + aBooking.pilot.firstName,
-    						start : new Date(aBooking.start),
-    						end : new Date(aBooking.end),
-    						allDay : false
-    				}
-    				$scope.events.push(singleEvent);
-    			});
-    		}).error(function(data, status) {
-    			alert('Error:' + data + status);
-    		});
-    /* event source that calls a function on every view switch */
+
+        $scope.events = [];
+
     $scope.eventsF = function (start, end, callback) {
-      callback($scope.events);
+        $scope.events.length = 0;
+        $http
+            .get(
+            'http://localhost:8080/book-my-wings/rest/bookings?start=0&pageSize=1000')
+            .success(function(data) {
+                angular.forEach(data, function (aBooking, key) {
+                    var singleEvent = {
+                            id : aBooking.bookingId,
+                            title : aBooking.aircraft.registration + ' ' + aBooking.pilot.firstName,
+                            start : new Date(aBooking.start),
+                            end : new Date(aBooking.end),
+                            allDay : false
+                    }
+                    $scope.events.push(singleEvent);
+                });
+            }).error(function(data, status) {
+                
+            });
+        callback($scope.events);
     };
 
     /* alert on eventClick */
@@ -98,14 +98,7 @@ angular.module('clientTestApp')
     			end : endDate
     	};
 
-    	$http
-		.post(
-				'http://localhost:8080/book-my-wings/rest/bookings/booking', booking)
-		.success(function(data) {
-			alert('Success');
-		}).error(function(data, status) {
-			alert('Error:' + data + status);
-		});
+        Booking.addBooking(booking);
       
     };
     /* remove event */
@@ -146,7 +139,7 @@ angular.module('clientTestApp')
     $scope.agendaMonth = 'Month';
 
     /* event sources array*/
-    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF]; 
+    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
 
     // Timepicker-Config
     $scope.startTime = new Date();
@@ -172,7 +165,7 @@ angular.module('clientTestApp')
 
 	$http
 			.get(
-					'http://localhost:8080/book-my-wings/rest/aircrafts?start=0&pageSize=100')
+					'http://localhost:8080/book-my-wings/rest/aircrafts/business/pilot/' + AuthService.currentUser().id)
 			.success(function(data) {
 				$scope.aircrafts = data;
 			}).error(function(data, status) {
