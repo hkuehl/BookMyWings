@@ -34,15 +34,17 @@ import com.prodyna.bmw.server.pilot.Pilot;
 @NamedQueries({
 		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_BY_ID, query = "select b from Booking b where b.bookingId = :"
 				+ Booking.QUERY_PARAMETER_BOOKINGID),
+		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_FOR_PILOT, query = "select b from Booking b where b.pilot.id = :"
+				+ Booking.QUERY_PARAMETER_PILOT_ID),
 		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_BY_CORE_ATTRIBUTES, query = "select b from Booking b where b.aircraft = :"
 				+ Booking.QUERY_PARAMETER_AIRCRAFT
 				+ " and b.pilot = :"
 				+ Booking.QUERY_PARAMETER_PILOT
-				+ " and b.startDate = :"
+				+ " and b.start = :"
 				+ Booking.QUERY_PARAMETER_START
-				+ " and b.endDate = :"
+				+ " and b.end = :"
 				+ Booking.QUERY_PARAMETER_END),
-		@NamedQuery(name = Booking.QUERY_GET_ALL_BOOKINGS_PAGINATED, query = "select b from Booking b order by b.startDate") })
+		@NamedQuery(name = Booking.QUERY_GET_ALL_BOOKINGS_PAGINATED, query = "select b from Booking b order by b.start") })
 public class Booking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,8 +53,11 @@ public class Booking implements Serializable {
 
 	public static final String QUERY_FIND_BOOKING_BY_CORE_ATTRIBUTES = "Booking.findBookingByCoreAttributes";
 
+	public static final String QUERY_FIND_BOOKING_FOR_PILOT = "Booking.findBookingForPilot";
+
 	public static final String QUERY_PARAMETER_BOOKINGID = "bookingId";
 	public static final String QUERY_PARAMETER_PILOT = "pilot";
+	public static final String QUERY_PARAMETER_PILOT_ID = "pilotId";
 	public static final String QUERY_PARAMETER_AIRCRAFT = "aircraft";
 	public static final String QUERY_PARAMETER_START = "start";
 	public static final String QUERY_PARAMETER_END = "end";
@@ -77,13 +82,13 @@ public class Booking implements Serializable {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Date startDate;
+	@Column(nullable = false, name = "startDate")
+	private Date start;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Date endDate;
+	@Column(nullable = false, name = "endDate")
+	private Date end;
 
 	@NotNull
 	@Column(nullable = false)
@@ -132,11 +137,11 @@ public class Booking implements Serializable {
 		} else if (!bookingId.equals(other.bookingId)) {
 			return false;
 		}
-		if (endDate == null) {
-			if (other.endDate != null) {
+		if (end == null) {
+			if (other.end != null) {
 				return false;
 			}
-		} else if (!dateEquals(endDate, other.endDate)) {
+		} else if (!dateEquals(end, other.end)) {
 			return false;
 		}
 		if (pilot == null) {
@@ -146,11 +151,11 @@ public class Booking implements Serializable {
 		} else if (!pilot.equals(other.pilot)) {
 			return false;
 		}
-		if (startDate == null) {
-			if (other.startDate != null) {
+		if (start == null) {
+			if (other.start != null) {
 				return false;
 			}
-		} else if (!dateEquals(startDate, other.startDate)) {
+		} else if (!dateEquals(start, other.start)) {
 			return false;
 		}
 		return true;
@@ -169,7 +174,7 @@ public class Booking implements Serializable {
 	}
 
 	public Date getEnd() {
-		return endDate;
+		return end;
 	}
 
 	public Pilot getPilot() {
@@ -177,7 +182,7 @@ public class Booking implements Serializable {
 	}
 
 	public Date getStart() {
-		return startDate;
+		return start;
 	}
 
 	@Override
@@ -188,10 +193,9 @@ public class Booking implements Serializable {
 				+ ((aircraft == null) ? 0 : aircraft.hashCode());
 		result = prime * result
 				+ ((bookingId == null) ? 0 : bookingId.hashCode());
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((end == null) ? 0 : end.hashCode());
 		result = prime * result + ((pilot == null) ? 0 : pilot.hashCode());
-		result = prime * result
-				+ ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((start == null) ? 0 : start.hashCode());
 		return result;
 	}
 
@@ -208,7 +212,7 @@ public class Booking implements Serializable {
 	}
 
 	public void setEnd(Date end) {
-		this.endDate = end;
+		this.end = end;
 	}
 
 	public void setPilot(Pilot pilot) {
@@ -216,15 +220,14 @@ public class Booking implements Serializable {
 	}
 
 	public void setStart(Date start) {
-		this.startDate = start;
+		this.start = start;
 	}
 
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", aircraft=" + aircraft
-				+ ", pilot=" + pilot + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", bookingState=" + bookingState
-				+ "]";
+				+ ", pilot=" + pilot + ", startDate=" + start + ", endDate="
+				+ end + ", bookingState=" + bookingState + "]";
 	}
 
 }

@@ -1,11 +1,15 @@
 package com.prodyna.bmw.server.booking.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 import com.prodyna.bmw.server.booking.Booking;
 import com.prodyna.bmw.server.booking.BookingService;
@@ -140,6 +144,52 @@ public class BookingServiceBean implements BookingService {
 				.getResultList();
 		return resultList.isEmpty() ? null : resultList.get(0);
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.bmw.server.booking.BookingService#readBookingsForMonth(java
+	 * .lang.Integer)
+	 */
+	@Override
+	public List<Booking> readBookingsForMonth(final Integer month) {
+		List<Booking> allBookings = em.createNamedQuery(
+				Booking.QUERY_GET_ALL_BOOKINGS_PAGINATED, Booking.class)
+				.getResultList();
+		final Calendar calendar = Calendar.getInstance();
+		CollectionUtils.filter(allBookings, new Predicate() {
+			@Override
+			public boolean evaluate(Object arg0) {
+				Booking booking = (Booking) arg0;
+				calendar.setTime(booking.getStart());
+				boolean startsInThisMonth = calendar.get(Calendar.MONTH) + 1 == month
+						.intValue();
+				calendar.setTime(booking.getEnd());
+				boolean endsInThisMonth = calendar.get(Calendar.MONTH) + 1 == month
+						.intValue();
+				return startsInThisMonth || endsInThisMonth;
+			}
+		});
+
+		return allBookings;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.bmw.server.booking.BookingService#readBookingsForPilot(java
+	 * .lang.String)
+	 */
+	@Override
+	public List<Booking> readBookingsForPilot(String pilotId) {
+		return em
+				.createNamedQuery(Booking.QUERY_FIND_BOOKING_FOR_PILOT,
+						Booking.class)
+				.setParameter(Booking.QUERY_PARAMETER_PILOT_ID, pilotId)
+				.getResultList();
 	}
 
 	/*

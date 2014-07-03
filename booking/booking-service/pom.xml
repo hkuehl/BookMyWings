@@ -26,5 +26,10 @@
   		<artifactId>bmw-license-client</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>commons-collections</groupId>
+  		<artifactId>commons-collections</artifactId>
+  		<version>3.1</version>
+  	</dependency>
   </dependencies>
 </project>

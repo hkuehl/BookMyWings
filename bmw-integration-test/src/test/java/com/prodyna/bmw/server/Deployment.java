@@ -23,6 +23,7 @@ public class Deployment {
 
 		WebArchive wa = ShrinkWrap.create(WebArchive.class, "test.war");
 		wa.addPackages(true, "com.prodyna.bmw.server");
+		wa.addPackages(true, "org.apache.commons.collections");
 		wa.addAsResource("META-INF/persistence.xml");
 		wa.addAsResource("META-INF/beans.xml");
 		// wa.addAsLibraries(mpc);

@@ -2,6 +2,7 @@ package com.prodyna.bmw.server.booking.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
@@ -138,6 +139,25 @@ public class BookingServiceTest {
 		b2.setAircraft(booking.getAircraft());
 		b2.setPilot(booking.getPilot());
 		bookingService.addBooking(b2);
+	}
+
+	@Test
+	@InSequence(4)
+	public void testFindBookingByMonth() {
+		List<Booking> bookingForMonth = bookingService
+				.readBookingsForMonth(Calendar.getInstance()
+						.get(Calendar.MONTH) + 1);
+
+		Assert.assertEquals(booking, bookingForMonth.get(0));
+	}
+
+	@Test
+	@InSequence(5)
+	public void testFindBookingForPilot() {
+		List<Booking> bookingForPilot = bookingService
+				.readBookingsForPilot(pilot.getId());
+
+		Assert.assertEquals(booking, bookingForPilot.get(0));
 	}
 
 	@Test

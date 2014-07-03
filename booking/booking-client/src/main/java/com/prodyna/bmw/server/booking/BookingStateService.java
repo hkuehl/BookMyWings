@@ -14,34 +14,35 @@ import javax.ws.rs.PathParam;
  */
 public interface BookingStateService {
 
-	@PUT
-	@Path("/booking/bringBack/{bookingId}")
-	@RolesAllowed("admin")
-	Booking bringBack(@PathParam("bookingId") String bookingId);
-
-	@PUT
-	@Path("/booking/cancel/{bookingId}")
-	@RolesAllowed("admin")
-	Booking cancel(@PathParam("bookingId") String bookingId);
-
 	@GET
+	@RolesAllowed({ "user", "admin" })
 	@Path("/booking/transitions/{bookingId}")
 	List<BookingState> allowedTransisitons(
 			@PathParam("bookingId") String bookingId);
 
 	@PUT
+	@Path("/booking/bringBack/{bookingId}")
+	@RolesAllowed({ "user", "admin" })
+	Booking bringBack(@PathParam("bookingId") String bookingId);
+
+	@PUT
+	@Path("/booking/cancel/{bookingId}")
+	@RolesAllowed({ "user", "admin" })
+	Booking cancel(@PathParam("bookingId") String bookingId);
+
+	@PUT
 	@Path("/booking/reserve/{bookingId}")
-	@RolesAllowed("admin")
+	@RolesAllowed({ "user", "admin" })
 	Booking reserve(@PathParam("bookingId") String bookingId);
 
 	@PUT
 	@Path("/booking/retrieve/{bookingId}")
-	@RolesAllowed("admin")
+	@RolesAllowed({ "user", "admin" })
 	Booking retrieve(@PathParam("bookingId") String bookingId);
 
 	@PUT
 	@Path("/booking/transfer/{bookingId}/{bookingState}")
-	@RolesAllowed("admin")
+	@RolesAllowed({ "user", "admin" })
 	Booking setState(@PathParam("bookingId") String bookingId,
 			@PathParam("bookingState") String bookingState);
 
