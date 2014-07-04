@@ -36,6 +36,7 @@ import com.prodyna.bmw.server.pilot.Pilot;
 				+ Booking.QUERY_PARAMETER_BOOKINGID),
 		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_FOR_PILOT, query = "select b from Booking b where b.pilot.id = :"
 				+ Booking.QUERY_PARAMETER_PILOT_ID),
+		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_OVERDUE, query = "select b from Booking b where b.end < CURRENT_TIMESTAMP"),
 		@NamedQuery(name = Booking.QUERY_FIND_BOOKING_BY_CORE_ATTRIBUTES, query = "select b from Booking b where b.aircraft = :"
 				+ Booking.QUERY_PARAMETER_AIRCRAFT
 				+ " and b.pilot = :"
@@ -50,10 +51,9 @@ public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public static final String QUERY_FIND_BOOKING_BY_ID = "Booking.findBookingById";
-
 	public static final String QUERY_FIND_BOOKING_BY_CORE_ATTRIBUTES = "Booking.findBookingByCoreAttributes";
-
 	public static final String QUERY_FIND_BOOKING_FOR_PILOT = "Booking.findBookingForPilot";
+	public static final String QUERY_FIND_BOOKING_OVERDUE = "Booking.findBookingOverdue";
 
 	public static final String QUERY_PARAMETER_BOOKINGID = "bookingId";
 	public static final String QUERY_PARAMETER_PILOT = "pilot";

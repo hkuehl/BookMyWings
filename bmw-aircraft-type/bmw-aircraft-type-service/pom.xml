@@ -20,4 +20,5 @@
   	</dependency>
   </dependencies>
   <packaging>ejb</packaging>
+  <name>bmw-aircraft-type-service</name>
 </project>

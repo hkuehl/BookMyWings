@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>aircraft-service</artifactId>
 	<packaging>ejb</packaging>
-	<name>Aircraft-Service</name>
+	<name>bmw-aircraft-service</name>
 	<description>Implementations for Entity Aircraft</description>
 	<build>
 		<plugins>

@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>booking-client</artifactId>
-	<name>booking-client</name>
+	<name>bmw-booking-client</name>
 	<description>Client-Service for Booking-Entity</description>
 
 	<dependencies>

@@ -9,7 +9,7 @@
 	<artifactId>aircraft</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Aircraft-Entity Parent</name>
+	<name>bmw-aircraft</name>
 	<description>Parent-Project for Entity Aircraft</description>
 	<modules>
 		<module>aircraft-client</module>

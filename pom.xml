@@ -5,7 +5,7 @@
 	<artifactId>book-my-wings</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Book My Wings Server-Components</name>
+	<name>bmw-root</name>
 	<description>Parent-Project for Book My Wings server components</description>
 
 	<build>
@@ -91,6 +91,7 @@
 		<module>booking</module>
 		<module>bmw-license-management</module>
 		<module>bmw-aircraft-type</module>
+		
 	</modules>
 	<profiles>
 		<profile>

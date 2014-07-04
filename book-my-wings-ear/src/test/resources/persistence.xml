@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+ 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<mapping class="com.prodyna.bmw.server.aircraft.Aircraft" />
+        <mapping class="com.prodyna.bmw.server.booking.Booking" />
+        <mapping class="com.prodyna.bmw.server.pilot.Pilot" />
+        <mapping class="com.prodyna.bmw.server.pilot.PilotRole" />
+        <mapping class="com.prodyna.bmw.server.aircraft.type.AircraftType" />
+        <mapping class="com.prodyna.bmw.server.license.PilotLicense" />
+    </session-factory>
+</hibernate-configuration>

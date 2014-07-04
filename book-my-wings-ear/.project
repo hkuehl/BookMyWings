@@ -4,6 +4,13 @@
 	<comment></comment>
 	<projects>
 		<project>book-my-wings-web</project>
+		<project>bmw-common-service</project>
+		<project>bmw-pilot-client</project>
+		<project>bmw-pilot-service</project>
+		<project>bmw-booking-service</project>
+		<project>bmw-booking-client</project>
+		<project>bmw-aircraft-client</project>
+		<project>bmw-aircraft-service</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

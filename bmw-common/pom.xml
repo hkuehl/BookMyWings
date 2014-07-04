@@ -7,7 +7,7 @@
   </parent>
   <artifactId>bmw-common</artifactId>
   <packaging>pom</packaging>
-  <name>BMW-Common Modules</name>
+  <name>bmw-common</name>
   <description>Parent-Project for Common-Modules</description>
   <modules>
   	<module>common-service</module>

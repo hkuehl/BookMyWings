@@ -7,7 +7,7 @@
   </parent>
   <artifactId>booking-service</artifactId>
   <packaging>ejb</packaging>
-  <name>booking-service</name>
+  <name>bmw-booking-service</name>
   <description>Service-Implementation for Booking-Entity</description>
   <dependencies>
   	<dependency>

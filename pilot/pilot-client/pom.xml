@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>pilot-client</artifactId>
-	<name>pilot-client</name>
+	<name>bmw-pilot-client</name>
 	<description>Client-Interface for Pilot-Entity</description>
 
 	<dependencies>

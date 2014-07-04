@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>common-service</artifactId>
 	<packaging>ejb</packaging>
-	<name>Common-Service</name>
+	<name>bmw-common-service</name>
 	<description>Common-Core-Stuff for Services</description>
 
 	<dependencies>

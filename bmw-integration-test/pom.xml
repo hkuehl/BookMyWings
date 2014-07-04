@@ -169,4 +169,5 @@
 			<type>war</type>
 		</dependency>
 	</dependencies>
+	<name>bmw-integration-test</name>
 </project>

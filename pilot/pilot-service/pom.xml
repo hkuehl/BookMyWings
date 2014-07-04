@@ -7,7 +7,7 @@
   </parent>
   <artifactId>pilot-service</artifactId>
   <packaging>ejb</packaging>
-  <name>pilot-service</name>
+  <name>bmw-pilot-service</name>
   <description>CRUD-Service for Pilot-Entity</description>
   <dependencies>
   	<dependency>

@@ -7,7 +7,7 @@
   </parent>
   <artifactId>pilot</artifactId>
   <packaging>pom</packaging>
-  <name>pilot</name>
+  <name>bmw-pilot</name>
   <description>Parent Project for the Pilot</description>
   <modules>
   	<module>pilot-client</module>

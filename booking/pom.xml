@@ -7,7 +7,7 @@
   </parent>
   <artifactId>booking</artifactId>
   <packaging>pom</packaging>
-  <name>booking</name>
+  <name>bmw-booking</name>
   <description>Parent-Project for the Booking-Entity</description>
   <modules>
   	<module>booking-client</module>

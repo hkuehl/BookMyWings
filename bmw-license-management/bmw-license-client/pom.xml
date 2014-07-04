@@ -12,4 +12,5 @@
   		<artifactId>hibernate-annotations</artifactId>
   	</dependency>
   </dependencies>
+  <name>bmw-license-client</name>
 </project>
