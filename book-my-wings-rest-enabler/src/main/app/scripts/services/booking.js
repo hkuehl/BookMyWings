@@ -8,7 +8,7 @@
  * Factory in the clientTestApp.
  */
 angular.module('clientTestApp')
-  .factory('Booking', function ($http, AuthService) {
+  .factory('Booking', function ($http, AuthService, Informer) {
 
     // Public API here
     return {
@@ -16,9 +16,9 @@ angular.module('clientTestApp')
           $http
           .post('http://localhost:8080/book-my-wings/rest/bookings/booking', booking)
           .success(function(data) {
-              
+              Informer.inform('Successfully added booking', 'info');
           }).error(function(data, status) {
-              alert('Ooops...Booking could not be added: ' + data + status);
+              Informer.inform('Error while adding booking: ' + data + status, 'info');
           });
       },
       getBookingsForPilot: function () {

@@ -7,10 +7,13 @@
  */
 angular.module('clientTestApp').factory(
 		'AuthService',
-		function($http) {
+		function($http, $location) {
 			var currentUser;
 			var dummy = {
-				id : 'dummy'
+				id : 'dummy',
+				pilotRole : {
+					pilotRole : 'dummy'
+				}
 			};
 
 			return {
@@ -25,10 +28,18 @@ angular.module('clientTestApp').factory(
 					});
 				},
 				isLoggedIn : function() {
-					return currentUser.id;
+					return currentUser.id != 'dummy';
 				},
 				currentUser : function() {
 					return currentUser ? currentUser : dummy;
+				},
+				isAdmin : function() {
+					return currentUser.pilotRole.pilotRole === 'admin';
+				},
+				logout : function() {
+					$http.defaults.headers.common.authorization = '';
+					currentUser = dummy;
+					$location.url('/');
 				}
 			};
 		})

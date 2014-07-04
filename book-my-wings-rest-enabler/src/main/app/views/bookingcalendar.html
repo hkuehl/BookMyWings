@@ -1,6 +1,10 @@
 <div role="main">
 	<div class="container-fluid">
 		<section id="directives-calendar" ng-controller="BookingcalendarCtrl">
+			<div ng-repeat="alert in allInfos()" class="alert alert-warning alert-dismissible" role="alert">
+  				<button type="button" class="close" ng-href="#" ng-click="removeInfos(alert)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  				{{alert.msg}}
+			</div>
 			<div class="well">
 				<div class="row">
 					<div class="col-md-4">

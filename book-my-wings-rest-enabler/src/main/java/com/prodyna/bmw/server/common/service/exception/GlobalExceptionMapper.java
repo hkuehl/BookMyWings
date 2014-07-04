@@ -1,6 +1,5 @@
 package com.prodyna.bmw.server.common.service.exception;
 
-import javax.validation.ValidationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -14,11 +13,10 @@ import org.slf4j.LoggerFactory;
  * 
  */
 @Provider
-public class ValidationExceptionMapper implements
-		ExceptionMapper<ValidationException> {
+public class GlobalExceptionMapper implements ExceptionMapper<Exception> {
 
 	private static final Logger LOGGER = LoggerFactory
-			.getLogger(ValidationExceptionMapper.class);
+			.getLogger(GlobalExceptionMapper.class);
 
 	/*
 	 * (non-Javadoc)
@@ -26,12 +24,12 @@ public class ValidationExceptionMapper implements
 	 * @see javax.ws.rs.ext.ExceptionMapper#toResponse(java.lang.Throwable)
 	 */
 	@Override
-	public Response toResponse(ValidationException exception) {
+	public Response toResponse(Exception exception) {
 
 		LOGGER.error("Caught ValidationException: {}", exception);
 
-		return Response.status(Response.Status.PRECONDITION_FAILED)
+		return Response.status(Response.Status.BAD_REQUEST)
 				.entity(exception.getLocalizedMessage())
-				.type(MediaType.TEXT_PLAIN_TYPE).build();
+				.type(MediaType.APPLICATION_JSON).build();
 	}
 }

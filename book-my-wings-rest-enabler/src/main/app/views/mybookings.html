@@ -1,0 +1,23 @@
+ <div ng-controller="MybookingsCtrl" ng-model="events">
+
+ <div ng-repeat="alert in allInfos()" class="alert alert-warning alert-dismissible" role="alert">
+  				<button type="button" class="close" ng-href="#" ng-click="removeInfos(alert)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  				{{alert.msg}}
+</div>
+ <div ng-hide="events.length" class="alert alert-info">No bookings found.</div>
+  <table ng-show="events.length" class="table">
+    <tr ng-repeat="item in events track by
+        $index" >
+      <td>{{item.registration}}</td>
+      <td>{{item.pilot.firstName}}</td>
+      <td>{{item.bookingState}}</td>
+      <td>{{item.start | date:'dd.MM.yyyy'}}</td>
+      <td>{{item.end | date:'dd.MM.yyyy'}}</td>
+      <td ng-repeat="transition in item.transitions">
+		<button type="button" class="btn btn-default btn">
+		  <span class="glyphicon glyphicon-plane"></span> Push to {{transition}}
+		</button>
+      </td>
+    </tr>
+  </table>
+</div>

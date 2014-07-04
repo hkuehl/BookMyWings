@@ -10,10 +10,15 @@ angular.module('clientTestApp').controller('HeaderCtrl',
 			$scope.$watch(AuthService.isLoggedIn, function(isLoggedIn) {
 				$scope.isLoggedIn = isLoggedIn;
 				$scope.user = AuthService.currentUser();
+				$scope.isAdmin = AuthService.isAdmin();
 			});
 			
 			$scope.active = function (path) {
 				return path === $location.path();
+			}
+
+			$scope.logout = function () {
+				AuthService.logout();
 			}
 			
 		});

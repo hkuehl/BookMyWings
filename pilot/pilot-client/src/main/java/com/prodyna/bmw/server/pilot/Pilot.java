@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -46,8 +47,11 @@ public class Pilot {
 	private String userName;
 
 	@Column(name = "password")
-	@NotNull
 	private String password;
+
+	@NotNull
+	@ManyToOne
+	private PilotRole pilotRole;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -82,6 +86,27 @@ public class Pilot {
 		} else if (!lastName.equals(other.lastName)) {
 			return false;
 		}
+		if (password == null) {
+			if (other.password != null) {
+				return false;
+			}
+		} else if (!password.equals(other.password)) {
+			return false;
+		}
+		if (pilotRole == null) {
+			if (other.pilotRole != null) {
+				return false;
+			}
+		} else if (!pilotRole.equals(other.pilotRole)) {
+			return false;
+		}
+		if (userName == null) {
+			if (other.userName != null) {
+				return false;
+			}
+		} else if (!userName.equals(other.userName)) {
+			return false;
+		}
 		return true;
 	}
 
@@ -97,8 +122,8 @@ public class Pilot {
 		return lastName;
 	}
 
-	public String getPassword() {
-		return password;
+	public PilotRole getPilotRole() {
+		return pilotRole;
 	}
 
 	public String getUserName() {
@@ -114,6 +139,12 @@ public class Pilot {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((pilotRole == null) ? 0 : pilotRole.hashCode());
+		result = prime * result
+				+ ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -129,8 +160,8 @@ public class Pilot {
 		this.lastName = lastName;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPilotRole(PilotRole pilotRole) {
+		this.pilotRole = pilotRole;
 	}
 
 	public void setUserName(String userName) {
@@ -140,7 +171,8 @@ public class Pilot {
 	@Override
 	public String toString() {
 		return "Pilot [id=" + id + ", lastName=" + lastName + ", firstName="
-				+ firstName + "]";
+				+ firstName + ", userName=" + userName + ", password="
+				+ password + ", pilotRole=" + pilotRole + "]";
 	}
 
 }

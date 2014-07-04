@@ -8,13 +8,11 @@
  * Controller of the clientTestApp
  */
 angular.module('clientTestApp')
-  .controller('BookingcalendarCtrl', function ($scope, $http, AuthService, Booking) {
+  .controller('BookingcalendarCtrl', function ($scope, $http, AuthService, Booking, Informer) {
+  
+  $scope.allInfos = Informer.allInfos;  
+  $scope.removeInfos = Informer.remove;
 
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-    
     $scope.agendaDay = 'Day';
     $scope.agendaWeek = 'Week';
     $scope.agendaMonth = 'Month';

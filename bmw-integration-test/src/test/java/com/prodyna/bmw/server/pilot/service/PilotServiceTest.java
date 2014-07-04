@@ -1,5 +1,7 @@
 package com.prodyna.bmw.server.pilot.service;
 
+import java.lang.reflect.Field;
+
 import javax.inject.Inject;
 
 import org.jboss.arquillian.junit.Arquillian;
@@ -8,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.prodyna.bmw.server.pilot.Pilot;
+import com.prodyna.bmw.server.pilot.PilotRole;
 import com.prodyna.bmw.server.pilot.PilotService;
 
 /**
@@ -21,13 +24,20 @@ public class PilotServiceTest {
 	private PilotService pilotService;
 
 	@Test
-	public void testCRUDPilotService() {
+	public void testCRUDPilotService() throws Exception {
 
 		Pilot pilot = new Pilot();
 		pilot.setFirstName("Alexander");
 		pilot.setLastName("Marcus");
 		pilot.setUserName(this.getClass().getName());
-		pilot.setPassword("passwd");
+		PilotRole pilotRole = new PilotRole();
+		pilotRole.setPilotRole("admin");
+		pilotRole.setPilotRoleMappingId("1");
+		pilot.setPilotRole(pilotRole);
+
+		Field passwdField = pilot.getClass().getDeclaredField("password");
+		passwdField.setAccessible(true);
+		passwdField.set(pilot, "passwd");
 
 		pilotService.addPilot(pilot);
 

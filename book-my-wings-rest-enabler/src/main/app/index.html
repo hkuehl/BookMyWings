@@ -27,12 +27,15 @@
         <ul class="nav nav-pills pull-right">
           <li ng-class="{active:active('/')}"><a ng-href="#">Home</a></li>
           <li ng-class="{active:active('/bookingCalendar')}"><a ng-href="#/bookingCalendar">Booking Calendar</a></li>
-          <li ng-model="user" ng-show="user" ><a ng-href="#">
+          <li ng-show="isLoggedIn" ng-class="{active:active('/myBookings')}"><a ng-href="#/myBookings">My Bookings</a></li>          
+          <li ng-show="isAdmin" ng-class="{active:active('/aircraftAdmin')}"><a ng-href="#/aircraftAdmin">Aircrafts</a></li>
+          <li ng-show="isAdmin" ng-class="{active:active('/licenseAdmin')}"><a ng-href="#/licenseAdmin">Licenses</a></li>
+          <li ng-model="user" ng-show="isLoggedIn" ><a ng-click="logout()" >
           	<strong>
-          	{{user.firstName}} {{user.lastName}}
+          	{{user.firstName}} {{user.lastName}} (Logout)
           	</strong>
           	</a></li>
-          <li ng-model="user" ng-hide="user" ><a ng-href="#/login">Login</a></li>
+          <li ng-model="user" ng-hide="isLoggedIn" ><a ng-href="#/login">Login</a></li>
         </ul>
         <h3 class="text-muted">Book-My-Wings</h3>
       </div>
@@ -87,6 +90,8 @@
         <script src="scripts/directives/a.js"></script>
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/services/booking.js"></script>
+        <script src="scripts/services/informer.js"></script>
+        <script src="scripts/controllers/mybookings.js"></script>
         <!-- endbuild -->
 </body>
 </html>

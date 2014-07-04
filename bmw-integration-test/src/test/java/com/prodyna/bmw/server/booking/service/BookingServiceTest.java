@@ -1,5 +1,6 @@
 package com.prodyna.bmw.server.booking.service;
 
+import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +26,7 @@ import com.prodyna.bmw.server.booking.BookingState;
 import com.prodyna.bmw.server.license.PilotLicense;
 import com.prodyna.bmw.server.license.PilotLicenseService;
 import com.prodyna.bmw.server.pilot.Pilot;
+import com.prodyna.bmw.server.pilot.PilotRole;
 import com.prodyna.bmw.server.pilot.PilotService;
 
 /**
@@ -54,7 +56,7 @@ public class BookingServiceTest {
 	private Booking booking;
 
 	@Before
-	public void setUp() throws InterruptedException {
+	public void setUp() throws Exception {
 		AircraftType type = new AircraftType();
 		type.setTypeString("Cesnaaaa" + ThreadLocalRandom.current().nextInt());
 		type = aircraftTypeService.addAircraftType(type);
@@ -75,7 +77,15 @@ public class BookingServiceTest {
 		pilot.setFirstName("Henry");
 		pilot.setLastName("Keeeewwwl");
 		pilot.setUserName("HenKue" + ThreadLocalRandom.current().nextInt());
-		pilot.setPassword("passwd");
+
+		Field passwdField = pilot.getClass().getDeclaredField("password");
+		passwdField.setAccessible(true);
+		passwdField.set(pilot, "passwd");
+
+		PilotRole pilotRole = new PilotRole();
+		pilotRole.setPilotRole("admin");
+		pilotRole.setPilotRoleMappingId("1");
+		pilot.setPilotRole(pilotRole);
 		pilot = pilotService.addPilot(pilot);
 
 		PilotLicense license = new PilotLicense();
