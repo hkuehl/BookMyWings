@@ -12,22 +12,17 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 public class Deployment {
 
 	@org.jboss.arquillian.container.test.api.Deployment
-	public static WebArchive createDeployment() {
+	public static WebArchive createDeployment() throws InterruptedException {
 
-		// File[] mpc = Maven.resolver().loadPomFromFile("pom.xml")
-		// .importCompileAndRuntimeDependencies().resolve()
-		// .withTransitivity().asFile();
-		// for (File f : mpc) {
-		// System.out.println("Found dependency: " + f);
-		// }
+		WebArchive war = ShrinkWrap.create(WebArchive.class, "test.war");
+		war.addPackages(true, "com.prodyna.bmw");
+		war.addPackages(true, "org.apache.commons.collections");
+		war.addAsResource("META-INF/persistence.xml");
+		war.addAsResource("META-INF/beans.xml");
 
-		WebArchive wa = ShrinkWrap.create(WebArchive.class, "test.war");
-		wa.addPackages(true, "com.prodyna.bmw.server");
-		wa.addPackages(true, "org.apache.commons.collections");
-		wa.addAsResource("META-INF/persistence.xml");
-		wa.addAsResource("META-INF/beans.xml");
-		// wa.addAsLibraries(mpc);
-		System.out.println(wa.toString(true));
-		return wa;
+		war.addAsWebInfResource("WEB-INF/jboss-web.xml");
+		war.addAsWebInfResource("WEB-INF/web.xml");
+		return war;
+
 	}
 }

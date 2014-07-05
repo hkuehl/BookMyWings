@@ -1,40 +1,58 @@
 package com.prodyna.bmw.client;
 
-import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.with;
-//import static com.jayway.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.equalTo;
+import java.io.UnsupportedEncodingException;
+
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
-import org.junit.Ignore;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.jayway.restassured.http.ContentType;
+import com.prodyna.bmw.server.aircraft.Aircraft;
+import com.prodyna.bmw.server.aircraft.AircraftService;
 
-/**
- * @author Henry Kuehl, PRODYNA AG
- * 
- */
 @RunWith(Arquillian.class)
-@Ignore
-public class AircraftServiceClientTest {
+public class AircraftServiceClientTest extends AbstractRESTTest {
 
 	@Test
 	@RunAsClient
-	public void testCRUDAircraftClient() {
-
-		with().parameters("id", "1", "registration", "D-HENK2")
-				.contentType(ContentType.JSON)
-				.when()
-				.authentication()
-				.basic("adminUser", "admin123")
-				.post("http://127.0.0.1:9999/book-my-wings/rest/aircrafts/aircraft")
-				.then().body("id", equalTo("1"));
-		given().with()
-				.contentType(ContentType.JSON)
-				.get("http://127.0.0.1:9999/book-my-wings/rest/aircrafts/aircraft/1")
-				.then().body("id", equalTo("1"));
+	public void testClientAsDynamicProxy() {
+		AircraftService aircraftService = createService(AircraftService.class);
+		Aircraft aircraft = aircraftService.getAircraft("aircraftId");
+		Assert.assertEquals("aircraftId", aircraft.getId());
 	}
+
+	@Test
+	@RunAsClient
+	public void testClientAsRest() throws InterruptedException,
+			UnsupportedEncodingException {
+		WebTarget target = createWebTarget();
+		JsonObject aircraft = target.path("/aircrafts/aircraft/aircraftId")
+				.request(MediaType.APPLICATION_JSON_TYPE).get(JsonObject.class);
+
+		Assert.assertEquals("\"aircraftId\"", aircraft.get("id").toString());
+
+		JsonArray aircrafts = target
+				.path("/aircrafts/aircraft/type/aircraftTypeId")
+				.request(MediaType.APPLICATION_JSON_TYPE).get(JsonArray.class);
+		Assert.assertEquals(
+				"\"com.prodyna.bmw.server.aircraft.service.AircraftBusinessServiceTest\"",
+				aircrafts.getJsonObject(0).get("registration").toString());
+
+	}
+
+	@Test(expected = BadRequestException.class)
+	@RunAsClient
+	public void testClientAuthentication() {
+		WebTarget target = createWebTargetNoAuth();
+		target.path("/aircrafts/aircraft/type/aircraftTypeId")
+				.request(MediaType.APPLICATION_JSON_TYPE).get(JsonObject.class);
+	}
+
 }

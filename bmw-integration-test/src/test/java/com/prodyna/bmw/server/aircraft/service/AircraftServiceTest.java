@@ -46,7 +46,7 @@ public class AircraftServiceTest {
 		aircraft = aircraftService.addAircraft(aircraft);
 
 		// does the DB generate a uuid??
-		Assert.assertTrue(aircraftService.getAircraft(aircraft.getId()) != null);
+		Assert.assertNotNull(aircraftService.getAircraft(aircraft.getId()));
 
 		// check for equality
 		Assert.assertEquals(aircraft,

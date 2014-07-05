@@ -37,7 +37,7 @@
 							<skip>false</skip>
 							<includes>
 								<include>
-									com/prodyna/bmw/server/**
+									com/prodyna/bmw/**
 								</include>
 							</includes>
 						</configuration>
@@ -69,6 +69,28 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>copy-standalone-xml</id>
+						<phase>process-test-classes</phase>
+						<configuration>
+							<target name="copy standalone.xml">
+								<copy
+									todir="${project.build.directory}/wildfly-8.1.0.Final/standalone/configuration"
+									overwrite="true">
+									<fileset dir="${basedir}/src/test/resources" includes="standalone.xml" />
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -163,10 +185,47 @@
 			<type>ejb</type>
 		</dependency>
 		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.5.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-proxy-client</artifactId>
+			<version>2.4.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-processing</artifactId>
+			<version>2.5.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.5.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>2.2.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
 			<artifactId>book-my-wings-web</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<type>war</type>
+			<classifier>classes</classifier>
 		</dependency>
 	</dependencies>
 	<name>bmw-integration-test</name>
