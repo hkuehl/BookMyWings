@@ -26,7 +26,7 @@ import com.prodyna.bmw.server.pilot.Pilot;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
- * 
+ *
  */
 @Entity
 @Table(name = "BOK_BOOKING", uniqueConstraints = @UniqueConstraint(columnNames = {

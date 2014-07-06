@@ -31,7 +31,7 @@ import com.prodyna.bmw.server.pilot.PilotService;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
- * 
+ *
  */
 @RunWith(Arquillian.class)
 public class BookingServiceTest {

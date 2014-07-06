@@ -1,8 +1,5 @@
 package com.prodyna.bmw.server.common.monitoring;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 public class ServiceCallAggregatedData {
 
 	private String service;
@@ -69,7 +66,9 @@ public class ServiceCallAggregatedData {
 
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this,
-				ToStringStyle.MULTI_LINE_STYLE);
+		return "ServiceCallAggregatedData [service=" + service + ", method="
+				+ method + ", min=" + min + ", max=" + max + ", sum=" + sum
+				+ ", count=" + count + "]";
 	}
+
 }

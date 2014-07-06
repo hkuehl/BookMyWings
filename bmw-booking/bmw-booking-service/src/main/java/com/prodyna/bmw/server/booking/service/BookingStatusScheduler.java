@@ -13,7 +13,7 @@ import com.prodyna.bmw.server.common.monitoring.Monitored;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
- * 
+ *
  */
 @Singleton
 @Monitored
@@ -27,10 +27,10 @@ public class BookingStatusScheduler {
 		List<Booking> resultList = em.createNamedQuery(
 				Booking.QUERY_FIND_BOOKING_OVERDUE, Booking.class)
 				.getResultList();
-		for (Booking booking : resultList) {
+		resultList.stream().forEach((booking) -> {
 			booking.setBookingState(BookingState.FINISHED);
 			em.merge(booking);
-		}
+		});
 	}
 
 }

@@ -6,7 +6,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
- * 
+ *
  */
 @ArquilianSuiteDeployment
 public class Deployment {
@@ -16,7 +16,6 @@ public class Deployment {
 
 		WebArchive war = ShrinkWrap.create(WebArchive.class, "test.war");
 		war.addPackages(true, "com.prodyna.bmw");
-		war.addPackages(true, "org.apache.commons.collections");
 		war.addAsResource("META-INF/persistence.xml");
 		war.addAsResource("META-INF/beans.xml");
 

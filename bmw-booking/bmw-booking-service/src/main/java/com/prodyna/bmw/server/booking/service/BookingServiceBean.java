@@ -1,15 +1,11 @@
 package com.prodyna.bmw.server.booking.service;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
 
 import com.prodyna.bmw.server.booking.Booking;
 import com.prodyna.bmw.server.booking.BookingService;
@@ -20,7 +16,7 @@ import com.prodyna.bmw.server.license.PilotLicenseService;
 
 /**
  * @author Henry Kuehl, PRODYNA AG
- * 
+ *
  */
 @Monitored
 @Stateless
@@ -46,14 +42,12 @@ public class BookingServiceBean implements BookingService {
 				.findLicenseForPilotAndAircraftType(booking.getPilot().getId(),
 						booking.getAircraft().getAircraftType().getId());
 
-		List<PilotLicense> validLicenses = new ArrayList<PilotLicense>();
-		for (PilotLicense license : licenses) {
-			if (license.getValidThru().after(booking.getEnd())) {
-				validLicenses.add(license);
-			}
-		}
+		long count = licenses
+				.stream()
+				.filter((license) -> license.getValidThru().after(
+						booking.getEnd())).count();
 
-		if (validLicenses.isEmpty()) {
+		if (count <= 0) {
 			throw new RuntimeException("No valid License found for Booking "
 					+ booking.toString());
 		}
@@ -159,19 +153,18 @@ public class BookingServiceBean implements BookingService {
 				Booking.QUERY_GET_ALL_BOOKINGS_PAGINATED, Booking.class)
 				.getResultList();
 		final Calendar calendar = Calendar.getInstance();
-		CollectionUtils.filter(allBookings, new Predicate() {
-			@Override
-			public boolean evaluate(Object arg0) {
-				Booking booking = (Booking) arg0;
-				calendar.setTime(booking.getStart());
-				boolean startsInThisMonth = calendar.get(Calendar.MONTH) + 1 == month
-						.intValue();
-				calendar.setTime(booking.getEnd());
-				boolean endsInThisMonth = calendar.get(Calendar.MONTH) + 1 == month
-						.intValue();
-				return startsInThisMonth || endsInThisMonth;
-			}
-		});
+
+		allBookings
+				.stream()
+				.filter((booking) -> {
+					calendar.setTime(booking.getStart());
+					boolean startsInThisMonth = calendar.get(Calendar.MONTH) + 1 == month
+							.intValue();
+					calendar.setTime(booking.getEnd());
+					boolean endsInThisMonth = calendar.get(Calendar.MONTH) + 1 == month
+							.intValue();
+					return startsInThisMonth || endsInThisMonth;
+				});
 
 		return allBookings;
 	}

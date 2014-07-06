@@ -1,6 +1,7 @@
 package com.prodyna.bmw.server.common.monitoring;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import javax.enterprise.event.Event;
@@ -13,13 +14,6 @@ import javax.interceptor.InvocationContext;
 @Monitored
 public class MonitoringInterceptor {
 
-	@Inject
-	private Event<ServiceCall> serviceCallEvent;
-
-	private static final String WELD = "$Proxy$";
-
-	private static boolean logEnabled = true;
-
 	public static boolean isLogEnabled() {
 		return logEnabled;
 	}
@@ -27,6 +21,13 @@ public class MonitoringInterceptor {
 	public static void setLogEnabled(final boolean logEnabled) {
 		MonitoringInterceptor.logEnabled = logEnabled;
 	}
+
+	@Inject
+	private Event<ServiceCall> serviceCallEvent;
+
+	private static final String WELD = "$Proxy$";
+
+	private static boolean logEnabled = true;
 
 	@AroundInvoke
 	public Object log(final InvocationContext context) throws Exception {
@@ -70,12 +71,14 @@ public class MonitoringInterceptor {
 
 	private String params(final InvocationContext context) {
 		StringBuffer sb = new StringBuffer();
-		for (Object p : context.getParameters()) {
+
+		Arrays.asList(context.getParameters()).stream().forEach(parameter -> {
 			if (sb.length() > 0) {
 				sb.append(",");
 			}
-			sb.append(p == null ? "null" : p.toString());
-		}
+			sb.append(parameter == null ? "null" : parameter.toString());
+		});
+
 		String out = sb.toString();
 		if (out.length() > 200) {
 			out = sb.substring(0, 199) + "...";

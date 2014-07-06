@@ -25,8 +25,8 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<argLine>-Xms128M -Xmx512M -XX:MaxPermSize=1024m
-								-XX:PermSize=1024m -Djboss.http.port=9999
+							<argLine>-Xms128M -Xmx512M
+								-Djboss.http.port=9999
 								-Djboss.management.http.port=9080</argLine>
 							<systemProperties>
 								<property>
