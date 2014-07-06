@@ -55,12 +55,12 @@
 	</build>
 
 	<modules>
-		<module>../aircraft</module>
+		<module>../bmw-aircraft</module>
 		<module>../bmw-aircraft-type</module>
 		<module>../bmw-common</module>
 		<module>../bmw-license-management</module>
-		<module>../booking</module>
-		<module>../pilot</module>
+		<module>../bmw-booking</module>
+		<module>../bmw-pilot</module>
 		<module>../book-my-wings-ear</module>
 		<module>../bmw-integration-test</module>
 	</modules>

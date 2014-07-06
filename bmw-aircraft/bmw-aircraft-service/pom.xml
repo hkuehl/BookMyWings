@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.prodyna.bmw.server</groupId>
-		<artifactId>aircraft</artifactId>
+		<artifactId>bmw-aircraft</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aircraft-service</artifactId>
+	<artifactId>bmw-aircraft-service</artifactId>
 	<packaging>ejb</packaging>
 	<name>bmw-aircraft-service</name>
 	<description>Implementations for Entity Aircraft</description>
@@ -25,7 +25,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>aircraft-client</artifactId>
+			<artifactId>bmw-aircraft-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -36,9 +36,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>bmw-license-service</artifactId>
+			<artifactId>bmw-license-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<type>ejb</type>
 		</dependency>
 	</dependencies>
 </project>

@@ -82,17 +82,15 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
-		<module>aircraft</module>
+		<module>bmw-aircraft</module>
 		<module>bmw-common</module>
 		<module>bmw-integration-test</module>
 		<module>book-my-wings-ear</module>
-		<module>book-my-wings-rest-enabler</module>
-		<module>pilot</module>
-		<module>booking</module>
+		<module>bmw-web</module>
+		<module>bmw-pilot</module>
+		<module>bmw-booking</module>
 		<module>bmw-license-management</module>
 		<module>bmw-aircraft-type</module>
-
-		
 	</modules>
 	<profiles>
 		<profile>

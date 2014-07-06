@@ -3,13 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.prodyna.bmw.server</groupId>
-		<artifactId>aircraft</artifactId>
+		<artifactId>bmw-booking</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aircraft-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>bmw-aircraft-client</name>
-	<description>Client-Interfaces for Entity Aircraft</description>
+	<artifactId>bmw-booking-client</artifactId>
+	<name>bmw-booking-client</name>
+	<description>Client-Service for Booking-Entity</description>
 
 	<dependencies>
 		<dependency>
@@ -24,6 +23,7 @@
 			<artifactId>hibernate-annotations</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 
 </project>

@@ -2,17 +2,17 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.prodyna.bmw.server</groupId>
-    <artifactId>booking</artifactId>
+    <artifactId>bmw-booking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>booking-service</artifactId>
+  <artifactId>bmw-booking-service</artifactId>
   <packaging>ejb</packaging>
   <name>bmw-booking-service</name>
   <description>Service-Implementation for Booking-Entity</description>
   <dependencies>
   	<dependency>
   		<groupId>com.prodyna.bmw.server</groupId>
-  		<artifactId>booking-client</artifactId>
+  		<artifactId>bmw-booking-client</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>

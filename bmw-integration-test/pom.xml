@@ -132,19 +132,19 @@
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>aircraft-service</artifactId>
+			<artifactId>bmw-aircraft-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>pilot-service</artifactId>
+			<artifactId>bmw-pilot-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>booking-service</artifactId>
+			<artifactId>bmw-booking-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>

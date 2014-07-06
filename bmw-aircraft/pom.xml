@@ -6,20 +6,13 @@
 		<artifactId>book-my-wings</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aircraft</artifactId>
+	<artifactId>bmw-aircraft</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>bmw-aircraft</name>
 	<description>Parent-Project for Entity Aircraft</description>
 	<modules>
-		<module>aircraft-client</module>
-		<module>aircraft-service</module>
+		<module>bmw-aircraft-client</module>
+		<module>bmw-aircraft-service</module>
 	</modules>
-	<dependencies>
-		<dependency>
-			<groupId>com.prodyna.bmw.server</groupId>
-			<artifactId>bmw-aircraft-type-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
 </project>

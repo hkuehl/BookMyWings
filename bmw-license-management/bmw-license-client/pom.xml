@@ -11,6 +11,11 @@
   		<groupId>org.hibernate</groupId>
   		<artifactId>hibernate-annotations</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>com.prodyna.bmw.server</groupId>
+  		<artifactId>bmw-aircraft-type-client</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   <name>bmw-license-client</name>
 </project>

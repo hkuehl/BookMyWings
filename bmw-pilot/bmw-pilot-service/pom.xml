@@ -2,17 +2,17 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.prodyna.bmw.server</groupId>
-    <artifactId>pilot</artifactId>
+    <artifactId>bmw-pilot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>pilot-service</artifactId>
+  <artifactId>bmw-pilot-service</artifactId>
   <packaging>ejb</packaging>
   <name>bmw-pilot-service</name>
   <description>CRUD-Service for Pilot-Entity</description>
   <dependencies>
   	<dependency>
   		<groupId>com.prodyna.bmw.server</groupId>
-  		<artifactId>pilot-client</artifactId>
+  		<artifactId>bmw-pilot-client</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>

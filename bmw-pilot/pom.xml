@@ -5,12 +5,12 @@
     <artifactId>book-my-wings</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>pilot</artifactId>
+  <artifactId>bmw-pilot</artifactId>
   <packaging>pom</packaging>
   <name>bmw-pilot</name>
   <description>Parent Project for the Pilot</description>
   <modules>
-  	<module>pilot-client</module>
-  	<module>pilot-service</module>
+  	<module>bmw-pilot-client</module>
+  	<module>bmw-pilot-service</module>
   </modules>
 </project>

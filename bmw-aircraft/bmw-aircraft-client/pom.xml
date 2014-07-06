@@ -3,12 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.prodyna.bmw.server</groupId>
-		<artifactId>pilot</artifactId>
+		<artifactId>bmw-aircraft</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>pilot-client</artifactId>
-	<name>bmw-pilot-client</name>
-	<description>Client-Interface for Pilot-Entity</description>
+	<artifactId>bmw-aircraft-client</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>bmw-aircraft-client</name>
+	<description>Client-Interfaces for Entity Aircraft</description>
 
 	<dependencies>
 		<dependency>
@@ -23,5 +24,11 @@
 			<artifactId>hibernate-annotations</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.prodyna.bmw.server</groupId>
+			<artifactId>bmw-aircraft-type-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
+
 </project>

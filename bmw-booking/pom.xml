@@ -5,24 +5,24 @@
     <artifactId>book-my-wings</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>booking</artifactId>
+  <artifactId>bmw-booking</artifactId>
   <packaging>pom</packaging>
   <name>bmw-booking</name>
   <description>Parent-Project for the Booking-Entity</description>
-  <modules>
-  	<module>booking-client</module>
-  	<module>booking-service</module>
-  </modules>
   <dependencies>
   	<dependency>
   		<groupId>com.prodyna.bmw.server</groupId>
-  		<artifactId>aircraft-client</artifactId>
+  		<artifactId>bmw-aircraft-client</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>com.prodyna.bmw.server</groupId>
-  		<artifactId>pilot-client</artifactId>
+  		<artifactId>bmw-pilot-client</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
+  <modules>
+  	<module>bmw-booking-client</module>
+  	<module>bmw-booking-service</module>
+  </modules>
 </project>
