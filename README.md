@@ -66,6 +66,13 @@ public class Aircraft {
 ...
 }
 ```
+Method-names should correspond to the CRUD-naming-convention: Create, Read, Update, Delete.
+
+Each entity provides its own URI in plural as entry-point for the ReST-API.
+Example:
+```
+https://<server>:<port>/bookmywings/rest/aircrafts/
+```
 
 ### Cross-references ###
 Services are not allowed to reference other services' implementation - they may only reference their client-interface.
